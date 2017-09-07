@@ -1,0 +1,74 @@
+
+Sub CommonVBAFunctions()
+
+'Select the Task 2 Min and Max tab
+Worksheets("Task 2 Min and Max").Activate
+
+'this sets the value of the cell you have currently selected as "Hello"
+ActiveCell.Value = "Hello"
+
+' This selects the cell A2
+Range("A2").Select
+
+' This selects the cells from A2 to B10
+Range("A2", "B10").Select
+
+' This selects the entire column that A2 is on (column A)
+Range("A2").EntireColumn.Select
+
+' This selects the entire row that A2 is on (row 2)
+Range("A2").EntireRow.Select
+
+' This selects the cell A2 and then selects all cells down the column
+Range("A2", Range("A2").End(xlDown)).Select
+
+' This starts at cell A2, goes down to the last row of the data,
+' then goes to the right to the last column of the data and selects all the cells
+Range("A2", Range("A2").End(xlDown).End(xlToRight)).Select
+
+' This selects the cell that is two columns to the right from the currently selected cell
+ActiveCell.Offset(0, 2).Select
+
+' This selects the cell C29, and then puts the value "VBA is cool." inside of the cell.
+Range("C29").Select
+ActiveCell.Value = "VBA is cool."
+
+' This finds the MIN value of the values from A2 to A26 and places it in an active cell.
+ActiveCell.Value = Application.WorksheetFunction.Min(Range("A2:A26"))
+
+' This finds the MAX value of the values from A2 to A26 and places it in cell N5
+Range("N5").Value = Application.WorksheetFunction.Max(Range("A2:A26"))
+
+' This finds the AVERAGE value of the values from A2 to A26 and places it in cell A28
+Range("A28").Value = Application.WorksheetFunction.Average(Range("A2:A26"))
+
+' This finds the SUM of the values from A2 to A26 and places it in cell A28
+Range("A29").Value = Application.WorksheetFunction.Sum(Range("A2:A26"))
+
+' This selects all the values starting at A2 down (CTRL + DOWN) in Excel, then sums the values
+Range("A30").Value = Application.WorksheetFunction.Sum(Range("A2", Range("A2").End(xlDown)))
+
+'This assigns the cell D28 a value of 20, E28 a value of 5, and then F28 the formula 'SUM(D28:F28)
+Range("D28").Value = 20
+Range("E28").Value = 5
+Range("F28").Formula = "=SUM(D28:E28)"
+
+' this selects the last row in column A of the dataset
+Range("A2").End(xlDown).Select
+
+' this selects the last row in column A of the dataset, and then moves 6 rows down
+Range("A2").End(xlDown).Offset(6, 0).Select
+
+' this selects the last row in column A of the dataset, and then moves 6 rows UP
+Range("A2").End(xlDown).Offset(-6, 0).Select
+
+' Assigns each cell from D40 to F40 the formula found in cell F28
+Range("D40:F40").Formula = Range("F28").Formula
+
+' Assigns the cell M2 the value 10. Assigns the cell M3 the formula =SUM(M2,2), which
+' Should equal 12. Copies this formula. Pastes this formula from M4 down to M100.
+Range("M2").Value = 10
+Range("M3").Formula = "=SUM(M2,2)"
+Range("M3").Copy
+Range("M4:D100").PasteSpecial
+
