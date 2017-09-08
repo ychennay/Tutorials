@@ -1,8 +1,13 @@
-## Session 2 - Creating A Histogram
+# Session 2
+
+
+#### Selecting Cells
 
 This selects the entire region of cells, and is equivalent to hitting CTRL + SHIFT + DOWN + RIGHT on your keyboard
 
 `ActiveCell.CurrentRegion.Select`
+
+
 
 This will select the next sheet in your workbook:
 
