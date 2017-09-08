@@ -3,7 +3,7 @@
 
 #### Selecting Cells
 
-This selects the entire region of cells, and is equivalent to hitting CTRL + SHIFT + DOWN + RIGHT on your keyboard
+This selects the **entire region of cells**, and is equivalent to hitting CTRL + SHIFT + DOWN + RIGHT on your keyboard
 
 `ActiveCell.CurrentRegion.Select`
 
