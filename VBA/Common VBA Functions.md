@@ -5,9 +5,9 @@
 - [1. Table of Contents](#1-table-of-contents)
 - [2. **2. Basic Functions**](#2-2-basic-functions)
         - [2.0.1. Other](#201-other)
-            - [2.0.1.1. Assigning Value to Cell ([Home](#1-table-of-contents))](#2011-assigning-value-to-cell-home1-table-of-contents)
-            - [2.0.1.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2` ([Home](#1-table-of-contents))](#2012-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2-home1-table-of-contents)
-            - [2.0.1.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2` ([Home](#1-table-of-contents))](#2013-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2-home1-table-of-contents)
+            - [2.0.1.1. Assigning Value to Cell](#2011-assigning-value-to-cell)
+            - [2.0.1.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`](#2012-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
+            - [2.0.1.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`](#2013-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2)
             - [2.0.1.4. Assigning Formula to Cell](#2014-assigning-formula-to-cell)
     - [2.1. **2.1. Selecting Things**](#21-21-selecting-things)
         - [2.1.1. **Selecting Workbooks**](#211-selecting-workbooks)
@@ -50,7 +50,7 @@
 
 ### 2.0.1. Other
 
-#### 2.0.1.1. Assigning Value to Cell ([Home](#1-table-of-contents))
+#### 2.0.1.1. Assigning Value to Cell
 `Range("M2").Value = 10`
 
 
@@ -61,10 +61,10 @@ Note here that when you are entering in a number, you do not need to put in quot
 You would get a string value, not a integer (number) value.
 
 
-#### 2.0.1.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2` ([Home](#1-table-of-contents))
+#### 2.0.1.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`
 `Range("A1:D2").Value = "Yu Chen"`
 
-#### 2.0.1.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2` ([Home](#1-table-of-contents))
+#### 2.0.1.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`
 ```
 MyVariable = "Yu Chen"
 Range("B2").Value = MyVariable
