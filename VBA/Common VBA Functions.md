@@ -1,13 +1,17 @@
+Table of Contents
+
 # Session 2
+
+
 
 
 #### Selecting Cells
 
-This selects the **entire region of cells**, and is equivalent to hitting `CTRL + SHIFT + DOWN + RIGHT` on your keyboard
+This selects the **entire region of cells**, and is equivalent to hitting `CTRL + SHIFT + DOWN + RIGHT` on your keyboard:
 
 `ActiveCell.CurrentRegion.Select`
 
-
+#### Selecting Sheets
 
 This will select the next sheet in your workbook:
 
