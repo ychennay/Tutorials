@@ -19,13 +19,16 @@
             - [3.2.1.3. Declaring a String (text) variable, assign the variable the value of cell `A1`, and then assign the value of cell `C1` the value of the variable](#3213-declaring-a-string-text-variable-assign-the-variable-the-value-of-cell-a1-and-then-assign-the-value-of-cell-c1-the-value-of-the-variable)
 - [4. **Basic Functions**](#4-basic-functions)
     - [4.1. **Other**](#41-other)
-        - [4.1.1. **Clearing and Deleting Stuff**](#411-clearing-and-deleting-stuff)
-            - [4.1.1.1. Clear (delete) the contents of column G](#4111-clear-delete-the-contents-of-column-g)
-            - [4.1.1.2. Clear the contents of all cells](#4112-clear-the-contents-of-all-cells)
-            - [4.1.1.3. Assigning Value to Cell](#4113-assigning-value-to-cell)
-            - [4.1.1.4. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`](#4114-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
-            - [4.1.1.5. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`](#4115-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2)
-            - [4.1.1.6. Assigning Formula to Cell](#4116-assigning-formula-to-cell)
+        - [4.1.1. ***Formatting your code***](#411-formatting-your-code)
+            - [4.1.1.1. Separating your code onto multiple lines](#4111-separating-your-code-onto-multiple-lines)
+        - [4.1.2. ***Clearing and Deleting Stuff***](#412-clearing-and-deleting-stuff)
+            - [4.1.2.1. Clear (delete) the contents of column G](#4121-clear-delete-the-contents-of-column-g)
+            - [4.1.2.2. Clear the contents of all cells](#4122-clear-the-contents-of-all-cells)
+            - [4.1.2.3. Assign a range of cells to a variable](#4123-assign-a-range-of-cells-to-a-variable)
+            - [4.1.2.4. Assigning Value to Cell](#4124-assigning-value-to-cell)
+            - [4.1.2.5. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`](#4125-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
+            - [4.1.2.6. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`](#4126-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2)
+            - [4.1.2.7. Assigning Formula to Cell](#4127-assigning-formula-to-cell)
     - [4.2. **Selecting Things**](#42-selecting-things)
         - [4.2.1. **Selecting Workbooks**](#421-selecting-workbooks)
             - [4.2.1.1. **Activating the current workbook (where the code resides)**](#4211-activating-the-current-workbook-where-the-code-resides)
@@ -50,7 +53,7 @@
             - [4.2.5.1. Copy the value in cell `M3`](#4251-copy-the-value-in-cell-m3)
             - [4.2.5.2. Copy and paste value from cell `A1` to `B1` all in one line](#4252-copy-and-paste-value-from-cell-a1-to-b1-all-in-one-line)
             - [4.2.5.3. Assign the cell `M2` the value `10`. Assign the cell `M3` the formula `=SUM(M2,2)`, which should equal `12`. Copy this formula. Paste this formula from `M4` down to `M100`.](#4253-assign-the-cell-m2-the-value-10-assign-the-cell-m3-the-formula-summ22-which-should-equal-12-copy-this-formula-paste-this-formula-from-m4-down-to-m100)
-    - [4.3. __**Formulas**__](#43-__formulas__)
+    - [4.3. **Formulas**](#43-formulas)
             - [4.3.0.4. Assigns each cell from `D40` to `F40` the formula found in cell `F28`](#4304-assigns-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
             - [4.3.0.5. Assign each cell from `D40` to `F40` the formula found in cell `F28`](#4305-assign-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
         - [4.3.1. **Formulas with Row Column Notation**](#431-formulas-with-row-column-notation)
@@ -62,6 +65,7 @@
             - [4.4.1.2. Find the minimum of column `A`](#4412-find-the-minimum-of-column-a)
             - [4.4.1.3. Find the max of row `3`](#4413-find-the-max-of-row-3)
             - [4.4.1.4. Select all the values starting at `A2` down (`CTRL + DOWN`) in Excel, then sums the values](#4414-select-all-the-values-starting-at-a2-down-ctrl--down-in-excel-then-sums-the-values)
+            - [4.4.1.5. Use `VLOOKUP` to look up the cell value in `E2` from the second column of reference table `A1:C20`](#4415-use-vlookup-to-look-up-the-cell-value-in-e2-from-the-second-column-of-reference-table-a1c20)
     - [4.5. **User Interaction**](#45-user-interaction)
         - [4.5.1. **Message Boxes**](#451-message-boxes)
             - [4.5.1.1. A simple message box with the text "Learning is kewl! and "OK" Button](#4511-a-simple-message-box-with-the-text-learning-is-kewl-and-ok-button)
@@ -200,17 +204,40 @@ Range("C1").Value = myNewStringVar
 
 ## 4.1. **Other**
 
-### 4.1.1. **Clearing and Deleting Stuff**
+### 4.1.1. ***Formatting your code***
 
-#### 4.1.1.1. Clear (delete) the contents of column G
+#### 4.1.1.1. Separating your code onto multiple lines
+
+Sometimes a particular function in VBA will take up a lot of space to write. One way to keep your code neat is to break it up into multiple lines. In order to tell VBA that you'd like to break up  your code into multiple lines, using ` _ ` to separate the code.
+
+Here is an example:
+` Temp = Application.WorksheetFunction.VLookup(Range("C2"), Ranage("A4:B200"),2,False)`
+
+can be broken up into
+
+```
+
+Temp = Application.WorksheetFunction.VLookup _ 
+    (Range("C2"), Range("A4:B200), 2, False)
+
+```
+
+([Home](#1-table-of-contents))
+### 4.1.2. ***Clearing and Deleting Stuff***
+
+#### 4.1.2.1. Clear (delete) the contents of column G
 `Range("G:G").ClearContents`
 
 ([Home](#1-table-of-contents))
-
-#### 4.1.1.2. Clear the contents of all cells
+#### 4.1.2.2. Clear the contents of all cells
 `Cells.ClearContents`
 
-#### 4.1.1.3. Assigning Value to Cell
+([Home](#1-table-of-contents))
+#### 4.1.2.3. Assign a range of cells to a variable
+`MyRange = Range("A1:B20")`
+
+([Home](#1-table-of-contents))
+#### 4.1.2.4. Assigning Value to Cell
 `Range("M2").Value = 10`
 
 Note here that when you are entering in a number, you do not need to put in quotation marks! If you were to write this instead:
@@ -220,20 +247,19 @@ Note here that when you are entering in a number, you do not need to put in quot
 You would get a string value, not a integer (number) value.
 
 ([Home](#1-table-of-contents))
-
-#### 4.1.1.4. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`
+#### 4.1.2.5. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`
 `Range("A1:D2").Value = "Yu Chen"`
 
 ([Home](#1-table-of-contents))
 
-#### 4.1.1.5. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`
+#### 4.1.2.6. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`
 ```
 MyVariable = "Yu Chen"
 Range("B2").Value = MyVariable
 ```
 ([Home](#1-table-of-contents))
 
-#### 4.1.1.6. Assigning Formula to Cell
+#### 4.1.2.7. Assigning Formula to Cell
 This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it.)
 
 `Range("M3").Formula = =SUM(M2,2)`
@@ -351,7 +377,7 @@ Range("M4:D100").PasteSpecial
 ```
 ([Home](#1-table-of-contents))
 
-## 4.3. __**Formulas**__
+## 4.3. **Formulas**
 
 #### 4.3.0.4. Assigns each cell from `D40` to `F40` the formula found in cell `F28` 
 `Range("D40:F40").Formula = Range("F28").Formula`
@@ -400,6 +426,17 @@ You need to input a range inside the `Min()` brackets.
 ([Home](#1-table-of-contents))
 #### 4.4.1.4. Select all the values starting at `A2` down (`CTRL + DOWN`) in Excel, then sums the values 
 `Range("A30").Value = Application.WorksheetFunction.Sum(Range("A2", Range("A2").End(xlDown)))`
+
+#### 4.4.1.5. Use `VLOOKUP` to look up the cell value in `E2` from the second column of reference table `A1:C20`
+
+``` 
+Dim CityVariable As String
+CityVariable = Application.WorksheetFunction.VLookup(Range("E2"), Range("A1:C20"),2,False)
+MsgBox("Employee " & Range("E2").Value & " is located in " & CityVariable)
+```
+
+~[VLookup](/VBA/Images/vlookup_vba.png)
+
 
 ([Home](#1-table-of-contents))
 ## 4.5. **User Interaction**
@@ -558,3 +595,5 @@ Next
 
 End Sub
 ```
+
+([Home](#1-table-of-contents))
