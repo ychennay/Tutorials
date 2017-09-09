@@ -101,6 +101,12 @@ There are different levels of **Scope** for a variable. Scope means what context
 - **Module Level**: this variable can be used in all the subroutines in the current module. You declare the variable the same way as the **Procedure Level**, but place it before all of the `Sub()` declarations. 
 - **Project Level**: this can be used anywhere in the current project. You declare this type of variable with the keyword `Public`.
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+
 ## Types of Variables
 
 |    Type	|   Description	|   Memory Used	|   Examples of Use Cases	
