@@ -401,7 +401,7 @@ Range("C3").Value = Greeting
 
 End Sub
 ```
-![Greeting](/Images/input_box_greeting.png)
+![Greeting](/VBA/Images/input_box_greeting.png)
 
 # 5. **Loops**
 
