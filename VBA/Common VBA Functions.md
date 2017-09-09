@@ -101,14 +101,17 @@ There are different levels of **Scope** for a variable. Scope means what context
 - **Module Level**: this variable can be used in all the subroutines in the current module. You declare the variable the same way as the **Procedure Level**, but place it before all of the `Sub()` declarations. 
 - **Project Level**: this can be used anywhere in the current project. You declare this type of variable with the keyword `Public`.
 
-| Type | Description | Memory Used
+| **Type** | **Description** | **Memory Used**
 | ------------- | ------------- | ------------- |
 |  **Boolean**  | A logical status of either `TRUE` or `FALSE`. This status also corresponds to `0` and `1`.  | 2 bytes |
 |  **Integer**  |Any whole number between **-32,768** and **32,767**. Use this for **discrete** counts (counting things that cannot be split into decimals or fractions, such as # of successful attempts, # of employees). You probably shouldn't use this, for example, when counting money. | 2 bytes	|
 |  **Long**  |Any whole number between **-2,147,483,648** and **2,147,483,647**. In general, you won't need to use this variable type, unless you are working with extremely large numbers (such as the population of the world), or GDP of countries. This type takes up twice as much space as a regular `Integer`. | 4 bytes |
-|  **Single**  |Any number (whole or decimal) between **-3.4e38** and **-1.4e-45** for negative values and **1.40e-45** through **3.40e38** for positive values. This  | 4 bytes |
-
-$$ax + b
+|  **Single**  |Any number (whole or decimal) between **-3.4e38** and **-1.4e-45** for negative values and **1.40e-45** through **3.40e38** for positive values.  | 4 bytes |
+|  **Double**  |Any number (whole or decimal) between **-1.78e308** and **-4.94e-324** for negative values and **4.9.40e-324** through **1.8e308** for positive values.  | 8 bytes |
+|  **Currency**  | Used to represent dollar values from **-922,337,203,685,477.5808** to **-922,337,203,685,477.5807**  | 8 bytes |
+|  **Date**  | Used to represent dates from **January 1st, 100 CE** to **December 31st, 9999 CE**  | 8 bytes |
+|  **String**  | Text used to store names, descriptions, etc.  | 10 bytes in addition to string length |
+|  **Variant**  | Any of the above. | At least 16 bytes.
 
 ## Types of Variables
 
