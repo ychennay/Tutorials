@@ -10,6 +10,7 @@
             - [2.0.2.2. Set the font in `A2` to be regular](#2022-set-the-font-in-a2-to-be-regular)
             - [2.0.2.3. Set the cell `B4` to be both bold and italic:](#2023-set-the-cell-b4-to-be-both-bold-and-italic)
 - [3. Variables](#3-variables)
+    - [Types of Variables](#types-of-variables)
     - [3.1. Declaring Variables](#31-declaring-variables)
             - [Force VBA to explicitly declare variables](#force-vba-to-explicitly-declare-variables)
         - [3.1.1. Module Level](#311-module-level)
@@ -93,6 +94,21 @@ Here are some general naming conventions when declaring and using variables:
 - must be less than **255** characters
 - must only use letters, numbers, or underscores (**no spaces**!)
 - cannot begin with a number
+
+There are different levels of **Scope** for a variable. Scope means what context the variable can be used.
+
+- **Procedure Level**: this variable can only be used inside the subroutine that it has been declared in. They are declared as using `Dim`.
+- **Module Level**: this variable can be used in all the subroutines in the current module. You declare the variable the same way as the **Procedure Level**, but place it before all of the `Sub()` declarations. 
+- **Project Level**: this can be used anywhere in the current project. You declare this type of variable with the keyword `Public`.
+
+## Types of Variables
+
+|    Type	|   Description	|   Memory Used	|   Examples of Use Cases	
+|---	|---	|---	|---	|---	|
+|   **Boolean**	|   A logical status of either `TRUE` or `FALSE`. This status also corresponds to `0` and `1`.	|   2 bytes	|   Check if a certain condition is met, any status that has a binary outcome.	|
+|   **Integer**	|   Any whole number between **-32,768** and **32,767**.	|   2 bytes	| Use this for **discrete** counts (counting things that cannot be split into decimals or fractions, such as # of successful attempts, # of employees). You probably shouldn't use this, for example, when counting money.   	|   	|
+|   	|   	|   	|   	|   	|
+
 
 ## 3.1. Declaring Variables
 
