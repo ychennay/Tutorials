@@ -5,13 +5,16 @@
 - [1. Table of Contents](#1-table-of-contents)
 - [2. **Formatting**](#2-formatting)
         - [2.0.1. **Color**](#201-color)
-            - [](#)
         - [2.0.2. **Font**](#202-font)
             - [2.0.2.1. Set the font in `A9` to bold](#2021-set-the-font-in-a9-to-bold)
             - [2.0.2.2. Set the font in `A2` to be regular](#2022-set-the-font-in-a2-to-be-regular)
             - [2.0.2.3. Set the cell `B4` to be both bold and italic:](#2023-set-the-cell-b4-to-be-both-bold-and-italic)
+- [Variables](#variables)
+        - [Declaring Variables](#declaring-variables)
+            - [Declaring a String (text) variable, assign the variable the value of cell `A1`, and then assign the value of cell `C1` the value of the variable](#declaring-a-string-text-variable-assign-the-variable-the-value-of-cell-a1-and-then-assign-the-value-of-cell-c1-the-value-of-the-variable)
 - [3. **Basic Functions**](#3-basic-functions)
         - [3.0.3. Other](#303-other)
+            - [Clear (delete) the contents of column G](#clear-delete-the-contents-of-column-g)
             - [3.0.3.1. Assigning Value to Cell](#3031-assigning-value-to-cell)
             - [3.0.3.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`](#3032-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
             - [3.0.3.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`](#3033-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2)
@@ -58,8 +61,6 @@
 
 ### 2.0.1. **Color**
 
-#### 
-
 
 ### 2.0.2. **Font**
 
@@ -81,14 +82,32 @@ You can also set it this way:
 
 `Range("B4").Font.FontStyle = "Bold italic"`
 
+# Variables
 
+### Declaring Variables
+
+#### Declaring a String (text) variable, assign the variable the value of cell `A1`, and then assign the value of cell `C1` the value of the variable
+
+```
+Dim myNewStringVar As String
+Range("A1").Select
+myNewStringVar = ActiveCell.Value
+Range("C1").Value = myNewStringVar
+```
+
+([Home](#1-table-of-contents))
 # 3. **Basic Functions**
 
 ### 3.0.3. Other
 
+#### Clear (delete) the contents of column G
+`Range("G:G").ClearContents`
+
+
+([Home](#1-table-of-contents))
+
 #### 3.0.3.1. Assigning Value to Cell
 `Range("M2").Value = 10`
-
 
 Note here that when you are entering in a number, you do not need to put in quotation marks! If you were to write this instead:
 
@@ -96,9 +115,12 @@ Note here that when you are entering in a number, you do not need to put in quot
 
 You would get a string value, not a integer (number) value.
 
+([Home](#1-table-of-contents))
 
 #### 3.0.3.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`
 `Range("A1:D2").Value = "Yu Chen"`
+
+([Home](#1-table-of-contents))
 
 #### 3.0.3.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`
 ```
@@ -106,6 +128,7 @@ MyVariable = "Yu Chen"
 Range("B2").Value = MyVariable
 ```
 ([Home](#1-table-of-contents))
+
 #### 3.0.3.4. Assigning Formula to Cell
 This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it.)
 
