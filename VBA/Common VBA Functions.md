@@ -4,17 +4,18 @@
 
 - [1. Table of Contents](#1-table-of-contents)
 - [2. **Formatting**](#2-formatting)
-        - [**Color**](#color)
-        - [**Font**](#font)
-            - [Set the font in `A9` to bold](#set-the-font-in-a9-to-bold)
-            - [Set the font in `A2` to be regular](#set-the-font-in-a2-to-be-regular)
-            - [Set the cell `B4` to be both bold and italic:](#set-the-cell-b4-to-be-both-bold-and-italic)
+        - [2.0.1. **Color**](#201-color)
+            - [](#)
+        - [2.0.2. **Font**](#202-font)
+            - [2.0.2.1. Set the font in `A9` to bold](#2021-set-the-font-in-a9-to-bold)
+            - [2.0.2.2. Set the font in `A2` to be regular](#2022-set-the-font-in-a2-to-be-regular)
+            - [2.0.2.3. Set the cell `B4` to be both bold and italic:](#2023-set-the-cell-b4-to-be-both-bold-and-italic)
 - [3. **Basic Functions**](#3-basic-functions)
-        - [3.0.1. Other](#301-other)
-            - [3.0.1.1. Assigning Value to Cell](#3011-assigning-value-to-cell)
-            - [3.0.1.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`](#3012-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
-            - [3.0.1.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`](#3013-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2)
-            - [3.0.1.4. Assigning Formula to Cell](#3014-assigning-formula-to-cell)
+        - [3.0.3. Other](#303-other)
+            - [3.0.3.1. Assigning Value to Cell](#3031-assigning-value-to-cell)
+            - [3.0.3.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`](#3032-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
+            - [3.0.3.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`](#3033-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2)
+            - [3.0.3.4. Assigning Formula to Cell](#3034-assigning-formula-to-cell)
     - [3.1. **2.1. Selecting Things**](#31-21-selecting-things)
         - [3.1.1. **Selecting Workbooks**](#311-selecting-workbooks)
             - [3.1.1.1. **Activating the current workbook (where the code resides)**](#3111-activating-the-current-workbook-where-the-code-resides)
@@ -29,9 +30,9 @@
             - [3.1.2.6. **Select entire column that `A2` is on (column `A`)**](#3126-select-entire-column-that-a2-is-on-column-a)
             - [3.1.2.7. Select entire row that `A2` is on (row `2`)](#3127-select-entire-row-that-a2-is-on-row-2)
         - [3.1.3. **Selecting Sheets**](#313-selecting-sheets)
-            - [3.1.3.1. Select a sheet by tab name (`Sheets2`)**](#3131-select-a-sheet-by-tab-name-sheets2)
-            - [3.1.3.2. ** Select the next sheet in your workbook**](#3132--select-the-next-sheet-in-your-workbook)
-            - [3.1.3.3. **Select the previous sheet in your workbook**](#3133-select-the-previous-sheet-in-your-workbook)
+            - [3.1.3.1. Select a sheet by tab name (`Sheets2`)](#3131-select-a-sheet-by-tab-name-sheets2)
+            - [3.1.3.2.Select the next sheet in your workbook](#3132select-the-next-sheet-in-your-workbook)
+            - [3.1.3.3. Select the previous sheet in your workbook](#3133-select-the-previous-sheet-in-your-workbook)
         - [3.1.4. Selecting Worksheets](#314-selecting-worksheets)
             - [3.1.4.1. **Select the `Task 2 Min and Max` tab**](#3141-select-the-task-2-min-and-max-tab)
         - [3.1.5. s **2.1.4. Copying / Pasting Things**](#315-s-214-copying--pasting-things)
@@ -55,34 +56,37 @@
 
 # 2. **Formatting**
 
-### **Color**
+### 2.0.1. **Color**
 
-### **Font**
+#### 
 
-#### Set the font in `A9` to bold
+
+### 2.0.2. **Font**
+
+#### 2.0.2.1. Set the font in `A9` to bold
 `Range("A9").Font.Bold = True`
 
 You can also set it this way:
 
 `Range("A9").Font.FontStyle = "Bold"`
 
-#### Set the font in `A2` to be regular
+#### 2.0.2.2. Set the font in `A2` to be regular
 `Range("A9").Font.Bold = False`
 
 You can also set it this way:
 
 `Range("A9").Font.FontStyle = "Regular"`
 
-#### Set the cell `B4` to be both bold and italic:
+#### 2.0.2.3. Set the cell `B4` to be both bold and italic:
 
 `Range("B4").Font.FontStyle = "Bold italic"`
 
 
 # 3. **Basic Functions**
 
-### 3.0.1. Other
+### 3.0.3. Other
 
-#### 3.0.1.1. Assigning Value to Cell
+#### 3.0.3.1. Assigning Value to Cell
 `Range("M2").Value = 10`
 
 
@@ -93,16 +97,16 @@ Note here that when you are entering in a number, you do not need to put in quot
 You would get a string value, not a integer (number) value.
 
 
-#### 3.0.1.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`
+#### 3.0.3.2. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`
 `Range("A1:D2").Value = "Yu Chen"`
 
-#### 3.0.1.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`
+#### 3.0.3.3. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`
 ```
 MyVariable = "Yu Chen"
 Range("B2").Value = MyVariable
 ```
 ([Home](#1-table-of-contents))
-#### 3.0.1.4. Assigning Formula to Cell
+#### 3.0.3.4. Assigning Formula to Cell
 This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it.)
 
 `Range("M3").Formula = =SUM(M2,2)`
@@ -170,16 +174,16 @@ This is also equivalent to the following command:
 A `Sheet` and a `Worksheet` are related, but cannot be used interchangeably. A `Sheet` is any Excel sheet, whereas a `Worksheet` is only a regular Excel worksheet. For example, a chart is a `Sheet` but is not a `Worksheet`.
 
 ([Home](#1-table-of-contents))
-#### 3.1.3.1. Select a sheet by tab name (`Sheets2`)**
+#### 3.1.3.1. Select a sheet by tab name (`Sheets2`)
 `Sheets("Sheets2").Select`
 
 ([Home](#1-table-of-contents))
-#### 3.1.3.2. ** Select the next sheet in your workbook**
+#### 3.1.3.2.Select the next sheet in your workbook
 
 `ActiveSheet.Next.Select`
 
 ([Home](#1-table-of-contents))
-#### 3.1.3.3. **Select the previous sheet in your workbook**
+#### 3.1.3.3. Select the previous sheet in your workbook
 
 `ActiveSheet.Previous.Select`
 
@@ -190,13 +194,13 @@ A `Sheet` and a `Worksheet` are related, but cannot be used interchangeably. A `
 `Worksheets("Task 2 Min and Max").Activate`
 
 ([Home](#1-table-of-contents))
-
 ### 3.1.5. s **2.1.4. Copying / Pasting Things**
 
 ([Home](#1-table-of-contents))
 #### 3.1.5.1. Copy the value in cell `M3`
 `Range("M3").Copy`
 
+([Home](#1-table-of-contents))
 #### 3.1.5.2. Copy and paste value from cell `A1` to `B1` all in one line
 `Range("A1").Copy Range("B1")`
 
