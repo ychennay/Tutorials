@@ -108,7 +108,7 @@ There are different levels of **Scope** for a variable. Scope means what context
 |  **Long**  |Any whole number between **-2,147,483,648** and **2,147,483,647**. In general, you won't need to use this variable type, unless you are working with extremely large numbers (such as the population of the world), or GDP of countries. This type takes up twice as much space as a regular `Integer`. | 4 bytes |
 |  **Single**  |Any number (whole or decimal) between **-3.4e38** and **-1.4e-45** for negative values and **1.40e-45** through **3.40e38** for positive values. This  | 4 bytes |
 
-$$ ax + b
+$$ax + b
 
 ## Types of Variables
 
