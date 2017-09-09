@@ -101,19 +101,14 @@ There are different levels of **Scope** for a variable. Scope means what context
 - **Module Level**: this variable can be used in all the subroutines in the current module. You declare the variable the same way as the **Procedure Level**, but place it before all of the `Sub()` declarations. 
 - **Project Level**: this can be used anywhere in the current project. You declare this type of variable with the keyword `Public`.
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Type | Description | Memory Used
+| ------------- | ------------- | ------------- |
+|  **Boolean**  | A logical status of either `TRUE` or `FALSE`. This status also corresponds to `0` and `1`.  | 2 bytes |
+|  **Integer**  |Any whole number between **-32,768** and **32,767**. Use this for **discrete** counts (counting things that cannot be split into decimals or fractions, such as # of successful attempts, # of employees). You probably shouldn't use this, for example, when counting money. | 2 bytes	|
 
 
 ## Types of Variables
 
-|    Type	|   Description	|   Memory Used	|   Examples of Use Cases	
-|---	|---	|---	|---	|---	|
-|   **Boolean**	|   A logical status of either `TRUE` or `FALSE`. This status also corresponds to `0` and `1`.	|   2 bytes	|   Check if a certain condition is met, any status that has a binary outcome.	|
-|   **Integer**	|   Any whole number between **-32,768** and **32,767**.	|   2 bytes	| Use this for **discrete** counts (counting things that cannot be split into decimals or fractions, such as # of successful attempts, # of employees). You probably shouldn't use this, for example, when counting money.   	|   	|
-|   	|   	|   	|   	|   	|
 
 
 ## 3.1. Declaring Variables
