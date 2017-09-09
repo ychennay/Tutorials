@@ -50,7 +50,7 @@
             - [4.2.5.1. Copy the value in cell `M3`](#4251-copy-the-value-in-cell-m3)
             - [4.2.5.2. Copy and paste value from cell `A1` to `B1` all in one line](#4252-copy-and-paste-value-from-cell-a1-to-b1-all-in-one-line)
             - [4.2.5.3. Assign the cell `M2` the value `10`. Assign the cell `M3` the formula `=SUM(M2,2)`, which should equal `12`. Copy this formula. Paste this formula from `M4` down to `M100`.](#4253-assign-the-cell-m2-the-value-10-assign-the-cell-m3-the-formula-summ22-which-should-equal-12-copy-this-formula-paste-this-formula-from-m4-down-to-m100)
-    - [4.3. **Formulas**](#43-formulas)
+    - [4.3. __**Formulas**__](#43-__formulas__)
             - [4.3.0.4. Assigns each cell from `D40` to `F40` the formula found in cell `F28`](#4304-assigns-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
             - [4.3.0.5. Assign each cell from `D40` to `F40` the formula found in cell `F28`](#4305-assign-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
         - [4.3.1. **Formulas with Row Column Notation**](#431-formulas-with-row-column-notation)
@@ -351,7 +351,7 @@ Range("M4:D100").PasteSpecial
 ```
 ([Home](#1-table-of-contents))
 
-## 4.3. **Formulas**
+## 4.3. __**Formulas**__
 
 #### 4.3.0.4. Assigns each cell from `D40` to `F40` the formula found in cell `F28` 
 `Range("D40:F40").Formula = Range("F28").Formula`
