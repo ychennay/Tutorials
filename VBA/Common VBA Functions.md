@@ -60,7 +60,8 @@
     - [4.4. **User Interaction**](#44-user-interaction)
         - [4.4.1. **Message Boxes**](#441-message-boxes)
             - [4.4.1.1. A simple message box with the text "Learning is kewl! and "OK" Button](#4411-a-simple-message-box-with-the-text-learning-is-kewl-and-ok-button)
-            - [Ask a user for their first and last name in a message box and greet them with text in cell `C3`.](#ask-a-user-for-their-first-and-last-name-in-a-message-box-and-greet-them-with-text-in-cell-c3)
+            - [Ask a user for their first and last name in an input box and greet them with text in cell `C3`.](#ask-a-user-for-their-first-and-last-name-in-an-input-box-and-greet-them-with-text-in-cell-c3)
+            - [Ask user to click a cell and return the address of that cell](#ask-user-to-click-a-cell-and-return-the-address-of-that-cell)
 - [5. **Loops**](#5-loops)
         - [5.0.2. **Do Loops**](#502-do-loops)
             - [5.0.2.1. Start at `A1` and move down until reaching an empty cell](#5021-start-at-a1-and-move-down-until-reaching-an-empty-cell)
@@ -382,7 +383,7 @@ You need to input a range inside the `Min()` brackets.
 
 ([Home](#1-table-of-contents))
 
-#### Ask a user for their first and last name in a message box and greet them with text in cell `C3`.
+#### Ask a user for their first and last name in an input box and greet them with text in cell `C3`.
 
 ```
 Sub AskNames()
@@ -402,6 +403,27 @@ Range("C3").Value = Greeting
 End Sub
 ```
 ![Greeting](/VBA/Images/input_box_greeting.png)
+([Home](#1-table-of-contents))
+
+#### Ask user to click a cell and return the address of that cell
+
+```
+Sub InputBox()
+
+Dim ResponseFromUser As Range
+Dim UserCellAddress As String
+
+Set ResponseFromUser = Application.InputBox("Please select the cells you'd like to work on.", "Select Cells", Type:=8)
+
+UserCellAddress = ResponseFromUser.Address
+
+MsgBox("The range you clicked on is found at " & UserCellAddress)
+
+End Sub
+```
+
+![Address](/VBA/Images/input_box_cell_address.png)
+([Home](#1-table-of-contents))
 
 # 5. **Loops**
 
