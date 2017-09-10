@@ -105,6 +105,7 @@
             - [Check whether or not the user clicked `Yes` in a message box](#check-whether-or-not-the-user-clicked-yes-in-a-message-box)
         - [Select Case](#select-case)
             - [Check the value of cell `A1`](#check-the-value-of-cell-a1)
+- [Debugging](#debugging)
 
 <!-- /TOC -->
 
@@ -764,3 +765,10 @@ Select Case Range("A1").Value
     Case 31 To 40: Range("A2).Value = "A Large Number"
 ```
 ([Home](#table-of-contents))
+
+# Debugging
+
+Debugging refers to the process of removing errors in the code so that it runs and functions as desired. This can be a very frustrating process, but it's important to keep a few things in mind while debugging:
+
+* **It's probably you**: that somehow doesn't run the code correctly. 99% of the time, it is **your fault** in the sense that something you wrote is not what it should be. I have only ever encountered maybe one instance ever where the source of the bug was a hardware issue.
+* **Be scientific** about how you debug. First, try to replicate the error. If you can do that, you begin to pin down the source of the bug. Then, go **incrementally** alter variables and lines and observe the impact. Do not attempt to make a whole broad brush stroke of fixes at the same time, since you won't be able to identify what caused the change in behavior of your new code.
