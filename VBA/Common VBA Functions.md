@@ -79,19 +79,24 @@
     - [**User Interaction**](#user-interaction)
         - [***Message Boxes***](#message-boxes)
             - [A simple message box with the text "Learning is kewl! and "OK" Button](#a-simple-message-box-with-the-text-learning-is-kewl-and-ok-button)
+            - [A message box with two lines of text on it](#a-message-box-with-two-lines-of-text-on-it)
             - [A message box with the text "Learning is kewl!" and "Breaking News..." as the title](#a-message-box-with-the-text-learning-is-kewl-and-breaking-news-as-the-title)
             - [Read the text from cell `A1` and display it inside the message box](#read-the-text-from-cell-a1-and-display-it-inside-the-message-box)
             - [Ask the user if they would like to proceed or not in a message box](#ask-the-user-if-they-would-like-to-proceed-or-not-in-a-message-box)
         - [***Input Boxes***](#input-boxes)
             - [Ask a user for their first and last name in an input box and greet them with text in cell `C3`.](#ask-a-user-for-their-first-and-last-name-in-an-input-box-and-greet-them-with-text-in-cell-c3)
             - [Ask user to click a cell and return the address of that cell](#ask-user-to-click-a-cell-and-return-the-address-of-that-cell)
-- [**Loops**](#loops)
+    - [**Loops**](#loops)
         - [***Do Loops***](#do-loops)
             - [Start at `A1` and move down until reaching an empty cell](#start-at-a1-and-move-down-until-reaching-an-empty-cell)
             - [Start at `A1` and move down until reaching a cell with a value less than `50`](#start-at-a1-and-move-down-until-reaching-a-cell-with-a-value-less-than-50)
         - [***For Next Loops***](#for-next-loops)
             - [Loop from `A1` down 20 cells](#loop-from-a1-down-20-cells)
             - [Loop from `A1` down `20` cells, with steps of `2`](#loop-from-a1-down-20-cells-with-steps-of-2)
+    - [**Logic and Conditions**](#logic-and-conditions)
+        - [***If Statements***](#if-statements)
+            - [Check if the active cell has a value of `5`](#check-if-the-active-cell-has-a-value-of-5)
+            - [Check whether or not the user clicked `Yes` in a message box](#check-whether-or-not-the-user-clicked-yes-in-a-message-box)
 
 <!-- /TOC -->
 
@@ -503,6 +508,12 @@ This also works:
 
 ([Home](#1-table-of-contents))
 
+#### A message box with two lines of text on it
+
+`MsgBox("This is line 1" & vbcrlf & "This is line 2")`
+
+([Home](#1-table-of-contents))
+
 #### A message box with the text "Learning is kewl!" and "Breaking News..." as the title
 
 `MsgBox("Learning is kewl!", vkOKOnly, "Hello")`
@@ -576,7 +587,8 @@ End Sub
 
 ([Home](#1-table-of-contents))
 
-# **Loops**
+
+## **Loops**
 
 ### ***Do Loops***
 
@@ -647,3 +659,22 @@ End Sub
 ```
 
 ([Home](#1-table-of-contents))
+
+## **Logic and Conditions**
+
+### ***If Statements***
+
+#### Check if the active cell has a value of `5`
+```
+If ActiveCell.Value = 5 Then
+    MsgBox("It's 5!)
+End If
+```
+
+#### Check whether or not the user clicked `Yes` in a message box
+```
+YesOrNo = MsgBox("Click something...", vbYesNo)
+If YesOrNo = vbYes Then
+    MsgBox("You clicked yes!)
+End If
+```
