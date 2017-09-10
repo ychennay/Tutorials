@@ -83,9 +83,12 @@
             - [A message box with the text "Learning is kewl!" and "Breaking News..." as the title](#a-message-box-with-the-text-learning-is-kewl-and-breaking-news-as-the-title)
             - [Read the text from cell `A1` and display it inside the message box](#read-the-text-from-cell-a1-and-display-it-inside-the-message-box)
             - [Ask the user if they would like to proceed or not in a message box](#ask-the-user-if-they-would-like-to-proceed-or-not-in-a-message-box)
+        - [***Dialog Boxes***](#dialog-boxes)
         - [***Input Boxes***](#input-boxes)
             - [Ask a user for their first and last name in an input box and greet them with text in cell `C3`.](#ask-a-user-for-their-first-and-last-name-in-an-input-box-and-greet-them-with-text-in-cell-c3)
+            - [Ask user to enter their name, and validate that input was entered using `IF` condition](#ask-user-to-enter-their-name-and-validate-that-input-was-entered-using-if-condition)
             - [Ask user to click a cell and return the address of that cell](#ask-user-to-click-a-cell-and-return-the-address-of-that-cell)
+            - [Ask for a decimal number value in the Input Box and place a type check to validate](#ask-for-a-decimal-number-value-in-the-input-box-and-place-a-type-check-to-validate)
     - [**Loops**](#loops)
         - [***Do Loops***](#do-loops)
             - [Start at `A1` and move down until reaching an empty cell](#start-at-a1-and-move-down-until-reaching-an-empty-cell)
@@ -506,13 +509,15 @@ This also works:
 
 `MsgBox("Learning is kewl!", vkOKOnly)`
 
+The `vbOKOnly` option specifies that only an OK button is available for users to click on.
+
 ([Home](#1-table-of-contents))
 
 #### A message box with two lines of text on it
 
 `MsgBox("This is line 1" & vbcrlf & "This is line 2")`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### A message box with the text "Learning is kewl!" and "Breaking News..." as the title
 
@@ -523,6 +528,7 @@ This also works:
 #### Read the text from cell `A1` and display it inside the message box
 
 `MsgBox(Range("A1").Value, vbOKOnly, "Hello")`
+([Home](#1-table-of-contents))
 
 #### Ask the user if they would like to proceed or not in a message box
 
@@ -541,6 +547,9 @@ End If
 ```
 
 ([Home](#1-table-of-contents))
+
+### ***Dialog Boxes***
+
 
 ### ***Input Boxes***
 
@@ -566,6 +575,27 @@ End Sub
 ![Greeting](/VBA/Images/input_box_greeting.png)
 ([Home](#1-table-of-contents))
 
+#### Ask user to enter their name, and validate that input was entered using `IF` condition
+
+```
+Sub InputBoxes()
+
+    Dim FirstName As String
+
+    FirstName = InputBox("Enter your name.", "Do it!")
+
+    If FirstName = "" Then
+
+    MsgBox("You didn't enter a name, dude!")
+
+    Else
+
+    MsgBox("Hello, " & FirstName)
+
+End Sub
+```
+
+([Home](#1-table-of-contents))
 #### Ask user to click a cell and return the address of that cell
 
 ```
@@ -582,12 +612,15 @@ MsgBox("The range you clicked on is found at " & UserCellAddress)
 
 End Sub
 ```
-
 ![Address](/VBA/Images/input_box_cell_address.png)
 
 ([Home](#1-table-of-contents))
 
+#### Ask for a decimal number value in the Input Box and place a type check to validate
 
+`InputBox("Enter a decimal:", Type:=1)`
+
+([Home](#1-table-of-contents))
 ## **Loops**
 
 ### ***Do Loops***
