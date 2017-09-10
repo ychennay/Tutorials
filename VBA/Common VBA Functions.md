@@ -124,18 +124,18 @@
 You can also set it this way:
 
 `Range("A9").Font.FontStyle = "Bold"`
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Set the font in `A2` to be regular
 `Range("A9").Font.Bold = False`
 
 You can also set it this way:
 
 `Range("A9").Font.FontStyle = "Regular"`
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Set the cell `B4` to be both bold and italic:
 
 `Range("B4").Font.FontStyle = "Bold italic"`
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 # **Variables**
 
 Here are some general naming conventions when declaring and using variables:
@@ -164,7 +164,7 @@ There are different levels of **Scope** for a variable. Scope means what context
 |  **String**  | Text used to store names, descriptions, etc.  | 10 bytes in addition to string length |
 |  **Variant**  | Any of the above. | At least 16 bytes.
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ## **Declaring Variables**
 
 #### Force VBA to explicitly declare variables
@@ -185,7 +185,7 @@ You will receive a `Compile error: Variable not defined` error, since the variab
 
 `Dim myNewVariable As String`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### ***Module Level***
 
 #### Declare a `Project` Level variable
@@ -278,25 +278,25 @@ Temp = Application.WorksheetFunction.VLookup _
 #### Find the address of the active cell
 `ActiveCell.Address`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Get the address of the last cell in the column `A`
 `Range("A1").End(xlDown).Address`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### ***Clearing and Deleting Stuff***
 
 #### Clear (delete) the contents of column `G`
 `Range("G:G").ClearContents`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Clear the contents of all cells
 `Cells.ClearContents`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Assign a range of cells to a variable
 `MyRange = Range("A1:B20")`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Assigning Value to Cell
 `Range("M2").Value = 10`
 
@@ -306,70 +306,70 @@ Note here that when you are entering in a number, you do not need to put in quot
 
 You would get a string value, not a integer (number) value.
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Assign the value `"Yu Chen"` to a range of cells from `A1` to `D2`
 `Range("A1:D2").Value = "Yu Chen"`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`
 ```
 MyVariable = "Yu Chen"
 Range("B2").Value = MyVariable
 ```
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Assigning Formula to Cell
 This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it.)
 
 `Range("M3").Formula = =SUM(M2,2)`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ## **Selecting Things**
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### ***Selecting Workbooks***
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Activating the current workbook (where the code resides)
 `ThisWorkbook.Activate`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Activate a workbook to the name of `My Macro Book`
 `Workbooks("My Work Book").Activate`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Activate the 2nd workbook (or specifically, the workbook in index position `2`)
 `Workbooks(2).Activate`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### ***Selecting Cells***
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### **Select a single cell `A2`**
 
 `Range("A2").Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select a group of cells that are not next to each other
 `Range("B2,C8,E9").Select`
 
 `Range("B2,C8,E9:E20").Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select the cells from `A2` to `B10`
 
 `Range("A2", "B10").Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select the last row in column `A` of the dataset, and then moves `6` rows down 
 `Range("A1").End(xlDown).Offset(6, 0).Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select the last row in column `C` of the dataset, and then moves `6` rows down
 `Range("C1").End(xlDown).Offset(-6, 0).Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select the entire region of cells
 This is equivalent to hitting `CTRL + SHIFT + DOWN + RIGHT` on your keyboard:
 
@@ -379,54 +379,54 @@ This is also equivalent to the following command:
 
 `Range("A2", Range("A2").End(xlDown).End(xlToRight)).Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select entire column that `A2` is on (column `A`)
 
 `Range("A2").EntireColumn.Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select entire row that `A2` is on (row `2`) 
 `Range("A2").EntireRow.Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### ***Selecting Sheets***
 
 A `Sheet` and a `Worksheet` are related, but cannot be used interchangeably. A `Sheet` is any Excel sheet, whereas a `Worksheet` is only a regular Excel worksheet. For example, a chart is a `Sheet` but is not a `Worksheet`.
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select a sheet by tab name (`Sheets2`)
 `Sheets("Sheets2").Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select the next sheet in your workbook
 
 `ActiveSheet.Next.Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select the previous sheet in your workbook
 
 `ActiveSheet.Previous.Select`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### ***Selecting Worksheets***
 
 #### **Select the `Task 2 Min and Max` tab**
 `Worksheets("Task 2 Min and Max").Activate`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### **Copying / Pasting Things**
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Copy the value in cell `M3`
 `Range("M3").Copy`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Copy and paste value from cell `A1` to `B1` all in one line
 `Range("A1").Copy Range("B1")`
 
 Note that this pastes all the formatting as well, so if you had a bolded cell in `A1`, you'll also have a bolded cell in `B1`.
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Assign the cell `M2` the value `10`. Assign the cell `M3` the formula `=SUM(M2,2)`, which should equal `12`. Copy this formula. Paste this formula from `M4` down to `M100`.
 
 ```
@@ -435,7 +435,7 @@ Range("M3").Formula = "=SUM(M2,2)"
 Range("M3").Copy 
 Range("M4:D100").PasteSpecial
 ```
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 ## **Formulas**
 
@@ -444,14 +444,14 @@ Range("M4:D100").PasteSpecial
 #### Assigns each cell from `D40` to `F40` the formula found in cell `F28` 
 `Range("D40:F40").Formula = Range("F28").Formula`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Assigns each cell from `D40` to `F40` a particular formula
 
 `Range("D40:F40").Formula = "=65 - A2"`
 
 Please note that when you do this, the formula is `F28` is interpreted **relatively**. For example, if your formula is `= 65 - A2`, the first row will have `= 65 - A2`, but the sec ond row will have `= 65 - A3` and the third row will have `= 65 - A4`.
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Assign each cell from `D40` to `F40` the formula found in cell `F28`
 `Range("D40:F40").Formula = Range("F28").Formula`
 
@@ -469,28 +469,28 @@ Please note that when you do this, the formula is `F28` is interpreted **relativ
 
 `ActiveCell.FormulaR1C1 = "= 65 - RC[-1]`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 ## **Using Excel Functions**
 
 ### ***Math Functions***
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Find the AVERAGE value of the range from `A2` to `A26` and place it in cell `A28` 
 `Range("A28").Value = Application.WorksheetFunction.Average(Range("A2:A26"))`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Find the minimum of column `A`
 
 `Application.WorksheetFunction.Min(Range("A2").EntireColumn.Select)`
 
 You need to input a range inside the `Min()` brackets.
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Find the max of row `3`
 `Application.WorksheetFunction.Min(Range("A3").EntireRow.Select)`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Select all the values starting at `A2` down (`CTRL + DOWN`) in Excel, then sums the values 
 `Range("A30").Value = Application.WorksheetFunction.Sum(Range("A2", Range("A2").End(xlDown)))`
 
@@ -504,7 +504,7 @@ MsgBox("Employee " & Range("E2").Value & " is located in " & CityVariable)
 
 ![VLookup](/VBA/Images/vlookup_vba.png)
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ## **User Interaction**
 
 ### ***Message Boxes***
@@ -519,7 +519,7 @@ This also works:
 
 The `vbOKOnly` option specifies that only an OK button is available for users to click on.
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### A message box with two lines of text on it
 
@@ -531,12 +531,12 @@ The `vbOKOnly` option specifies that only an OK button is available for users to
 
 `MsgBox("Learning is kewl!", vkOKOnly, "Hello")`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Read the text from cell `A1` and display it inside the message box
 
 `MsgBox(Range("A1").Value, vbOKOnly, "Hello")`
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Ask the user if they would like to proceed or not in a message box
 
@@ -552,7 +552,7 @@ Else
 End If
 ```
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ### ***Dialog Boxes***
 
 #### Save one tab of a multi-tab workbook to a new file using the `Save As` dialog box
@@ -589,7 +589,7 @@ End With
 NewBook.SaveAs filename:=FileName
 NewBook.Close
 ```
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 ### ***Input Boxes***
 
@@ -613,7 +613,7 @@ Range("C3").Value = Greeting
 End Sub
 ```
 ![Greeting](/VBA/Images/input_box_greeting.png)
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Ask user to enter their name, and validate that input was entered using `IF` condition
 
@@ -635,7 +635,7 @@ Sub InputBoxes()
 End Sub
 ```
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 #### Ask user to click a cell and return the address of that cell
 
 ```
@@ -654,13 +654,13 @@ End Sub
 ```
 ![Address](/VBA/Images/input_box_cell_address.png)
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Ask for a decimal number value in the Input Box and place a type check to validate
 
 `InputBox("Enter a decimal:", Type:=1)`
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 ## **Loops**
 
 ### ***Do Loops***
@@ -676,7 +676,7 @@ Do While ActiveCell.Value <> ""
 
 Loop
 ```
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Start at `A1` and move down until reaching a cell with a value less than `50`
 
@@ -689,7 +689,7 @@ Do While ActiveCell.Value < 50
 
 Loop
 ```
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 ### ***For Next Loops***
 
@@ -711,7 +711,7 @@ Next
 End Sub
 ```
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 #### Loop from `A1` down `20` cells, with steps of `2`
 
@@ -731,7 +731,7 @@ Next
 End Sub
 ```
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 ## **Logic and Conditions**
 
@@ -763,4 +763,4 @@ Select Case Range("A1").Value
     Case 21 To 30: Range("A2).Value = "A Medium Number"
     Case 31 To 40: Range("A2).Value = "A Large Number"
 ```
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
