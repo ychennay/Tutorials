@@ -4,21 +4,26 @@
 
 - [1. Table of Contents](#1-table-of-contents)
 - [2. **Formatting**](#2-formatting)
-        - [2.0.1. **Color**](#201-color)
+        - [2.0.1. ***Color***](#201-color)
             - [2.0.1.1. Set the background color of cell `A1` to red](#2011-set-the-background-color-of-cell-a1-to-red)
         - [2.0.2. **Font**](#202-font)
             - [2.0.2.1. Set the font in `A9` to bold](#2021-set-the-font-in-a9-to-bold)
             - [2.0.2.2. Set the font in `A2` to be regular](#2022-set-the-font-in-a2-to-be-regular)
             - [2.0.2.3. Set the cell `B4` to be both bold and italic:](#2023-set-the-cell-b4-to-be-both-bold-and-italic)
-- [3. Variables](#3-variables)
+- [3. **Variables**](#3-variables)
     - [3.1. **Types of Variables**](#31-types-of-variables)
-    - [3.2. **3.2. Declaring Variables**](#32-32-declaring-variables)
+    - [3.2. ** Declaring Variables**](#32--declaring-variables)
             - [3.2.0.4. Force VBA to explicitly declare variables](#3204-force-vba-to-explicitly-declare-variables)
-        - [3.2.1. **Module Level**](#321-module-level)
+        - [3.2.1. ***Module Level***](#321-module-level)
             - [3.2.1.1. Declare a `Project` Level variable](#3211-declare-a-project-level-variable)
             - [3.2.1.2. Declare a `Module` Level variable](#3212-declare-a-module-level-variable)
             - [3.2.1.3. Declaring a String (text) variable, assign the variable the value of cell `A1`, and then assign the value of cell `C1` the value of the variable](#3213-declaring-a-string-text-variable-assign-the-variable-the-value-of-cell-a1-and-then-assign-the-value-of-cell-c1-the-value-of-the-variable)
 - [4. **Basic Functions**](#4-basic-functions)
+    - [**Working With New Sheets and Workbooks**](#working-with-new-sheets-and-workbooks)
+        - [***Sheets***](#sheets)
+            - [Save the name of the active sheet to a variable](#save-the-name-of-the-active-sheet-to-a-variable)
+            - [Add a new sheet after the active sheet](#add-a-new-sheet-after-the-active-sheet)
+            - [Change sheet orientation to landscape](#change-sheet-orientation-to-landscape)
     - [4.1. **Other**](#41-other)
         - [4.1.1. ***Formatting your code***](#411-formatting-your-code)
             - [4.1.1.1. Separating your code onto multiple lines](#4111-separating-your-code-onto-multiple-lines)
@@ -30,28 +35,28 @@
             - [4.1.3.2. Clear the contents of all cells](#4132-clear-the-contents-of-all-cells)
             - [4.1.3.3. Assign a range of cells to a variable](#4133-assign-a-range-of-cells-to-a-variable)
             - [4.1.3.4. Assigning Value to Cell](#4134-assigning-value-to-cell)
-            - [4.1.3.5. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`](#4135-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
+            - [4.1.3.5. Assign the value `"Yu Chen"` to a range of cells from `A1` to `D2`](#4135-assign-the-value-yu-chen-to-a-range-of-cells-from-a1-to-d2)
             - [4.1.3.6. Assign a value of `"Yu Chen"` to the variable `MyVariable`, and then assign this variable to cell `B2`](#4136-assign-a-value-of-yu-chen-to-the-variable-myvariable-and-then-assign-this-variable-to-cell-b2)
             - [4.1.3.7. Assigning Formula to Cell](#4137-assigning-formula-to-cell)
     - [4.2. **Selecting Things**](#42-selecting-things)
-        - [4.2.1. **Selecting Workbooks**](#421-selecting-workbooks)
-            - [4.2.1.1. **Activating the current workbook (where the code resides)**](#4211-activating-the-current-workbook-where-the-code-resides)
-            - [4.2.1.2. **Activate a workbook to the name of `My Macro Book`**](#4212-activate-a-workbook-to-the-name-of-my-macro-book)
-            - [4.2.1.3. **Activate the 2nd workbook (or specifically, the workbook in index position `2`)**](#4213-activate-the-2nd-workbook-or-specifically-the-workbook-in-index-position-2)
-        - [4.2.2. **Selecting Cells**](#422-selecting-cells)
+        - [4.2.1. ***Selecting Workbooks***](#421-selecting-workbooks)
+            - [4.2.1.1. Activating the current workbook (where the code resides)](#4211-activating-the-current-workbook-where-the-code-resides)
+            - [4.2.1.2. Activate a workbook to the name of `My Macro Book`](#4212-activate-a-workbook-to-the-name-of-my-macro-book)
+            - [4.2.1.3. Activate the 2nd workbook (or specifically, the workbook in index position `2`)](#4213-activate-the-2nd-workbook-or-specifically-the-workbook-in-index-position-2)
+        - [4.2.2. ***Selecting Cells***](#422-selecting-cells)
             - [4.2.2.1. **Select a single cell `A2`**](#4221-select-a-single-cell-a2)
-            - [4.2.2.2. **Select a group of cells that are not next to each other **](#4222-select-a-group-of-cells-that-are-not-next-to-each-other-)
+            - [4.2.2.2. Select a group of cells that are not next to each other](#4222-select-a-group-of-cells-that-are-not-next-to-each-other)
             - [4.2.2.3. **Select the cells from `A2` to `B10`**](#4223-select-the-cells-from-a2-to-b10)
-            - [4.2.2.4. **Select the last row in column `A` of the dataset, and then moves `6` rows down**](#4224-select-the-last-row-in-column-a-of-the-dataset-and-then-moves-6-rows-down)
-            - [4.2.2.5. **Select the last row in column `C` of the dataset, and then moves `6` rows down**](#4225-select-the-last-row-in-column-c-of-the-dataset-and-then-moves-6-rows-down)
-            - [4.2.2.6. **Select the entire region of cells**](#4226-select-the-entire-region-of-cells)
-            - [4.2.2.7. **Select entire column that `A2` is on (column `A`)**](#4227-select-entire-column-that-a2-is-on-column-a)
+            - [4.2.2.4. Select the last row in column `A` of the dataset, and then moves `6` rows down](#4224-select-the-last-row-in-column-a-of-the-dataset-and-then-moves-6-rows-down)
+            - [4.2.2.5. Select the last row in column `C` of the dataset, and then moves `6` rows down](#4225-select-the-last-row-in-column-c-of-the-dataset-and-then-moves-6-rows-down)
+            - [4.2.2.6. Select the entire region of cells](#4226-select-the-entire-region-of-cells)
+            - [4.2.2.7. Select entire column that `A2` is on (column `A`)](#4227-select-entire-column-that-a2-is-on-column-a)
             - [4.2.2.8. Select entire row that `A2` is on (row `2`)](#4228-select-entire-row-that-a2-is-on-row-2)
-        - [4.2.3. **Selecting Sheets**](#423-selecting-sheets)
+        - [4.2.3. ***Selecting Sheets***](#423-selecting-sheets)
             - [4.2.3.1. Select a sheet by tab name (`Sheets2`)](#4231-select-a-sheet-by-tab-name-sheets2)
             - [4.2.3.2. Select the next sheet in your workbook](#4232-select-the-next-sheet-in-your-workbook)
             - [4.2.3.3. Select the previous sheet in your workbook](#4233-select-the-previous-sheet-in-your-workbook)
-        - [4.2.4. **Selecting Worksheets**](#424-selecting-worksheets)
+        - [4.2.4. ***Selecting Worksheets***](#424-selecting-worksheets)
             - [4.2.4.1. **Select the `Task 2 Min and Max` tab**](#4241-select-the-task-2-min-and-max-tab)
         - [4.2.5. **2.1.4. Copying / Pasting Things**](#425-214-copying--pasting-things)
             - [4.2.5.1. Copy the value in cell `M3`](#4251-copy-the-value-in-cell-m3)
@@ -61,7 +66,7 @@
             - [4.3.0.4. Assigns each cell from `D40` to `F40` the formula found in cell `F28`](#4304-assigns-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
             - [Assigns each cell from `D40` to `F40` a particular formula](#assigns-each-cell-from-d40-to-f40-a-particular-formula)
             - [4.3.0.5. Assign each cell from `D40` to `F40` the formula found in cell `F28`](#4305-assign-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
-        - [4.3.1. **Formulas with Row Column Notation**](#431-formulas-with-row-column-notation)
+        - [4.3.1. ***Formulas with Row Column Notation***](#431-formulas-with-row-column-notation)
             - [4.3.1.1. Assign the active cell the formula found in `G2` using Row Column notation](#4311-assign-the-active-cell-the-formula-found-in-g2-using-row-column-notation)
             - [4.3.1.2. Assign the active cell the formula `= 65 - the cell one to the left of the active cell`](#4312-assign-the-active-cell-the-formula--65---the-cell-one-to-the-left-of-the-active-cell)
     - [4.4. **Using Excel Functions**](#44-using-excel-functions)
@@ -92,7 +97,7 @@
 
 # 2. **Formatting**
 
-### 2.0.1. **Color**
+### 2.0.1. ***Color***
 
 #### 2.0.1.1. Set the background color of cell `A1` to red
 
@@ -118,7 +123,7 @@ You can also set it this way:
 
 `Range("B4").Font.FontStyle = "Bold italic"`
 ([Home](#1-table-of-contents))
-# 3. Variables
+# 3. **Variables**
 
 Here are some general naming conventions when declaring and using variables:
 
@@ -147,7 +152,7 @@ There are different levels of **Scope** for a variable. Scope means what context
 |  **Variant**  | Any of the above. | At least 16 bytes.
 
 ([Home](#1-table-of-contents))
-## 3.2. **3.2. Declaring Variables**
+## 3.2. ** Declaring Variables**
 
 #### 3.2.0.4. Force VBA to explicitly declare variables
 
@@ -170,7 +175,7 @@ You will receive a `Compile error: Variable not defined` error, since the variab
 `Dim myNewVariable As String`
 
 ([Home](#1-table-of-contents))
-### 3.2.1. **Module Level**
+### 3.2.1. ***Module Level***
 
 #### 3.2.1.1. Declare a `Project` Level variable
 
@@ -210,6 +215,28 @@ Range("C1").Value = myNewStringVar
 
 ([Home](#1-table-of-contents))
 # 4. **Basic Functions**
+
+## **Working With New Sheets and Workbooks**
+
+### ***Sheets***
+
+#### Save the name of the active sheet to a variable
+```
+Dim MySheet As String
+
+Sub SomeSub()
+MySheet = ActiveSheet.Name
+End Sub
+```
+The reason why the variable `MySheet` is declared as a module variable is because you'll probably use it as you switch between different subroutines.
+
+#### Add a new sheet after the active sheet
+
+`Sheets.Add After:=ActiveSheet`
+
+#### Change sheet orientation to landscape
+
+`ActiveSheet.PageSetup.Orientation = xlLandscape`
 
 ## 4.1. **Other**
 
@@ -266,7 +293,7 @@ Note here that when you are entering in a number, you do not need to put in quot
 You would get a string value, not a integer (number) value.
 
 ([Home](#1-table-of-contents))
-#### 4.1.3.5. Assign the value "Yu Chen" to a range of cells from `A1` to `D2`
+#### 4.1.3.5. Assign the value `"Yu Chen"` to a range of cells from `A1` to `D2`
 `Range("A1:D2").Value = "Yu Chen"`
 
 ([Home](#1-table-of-contents))
@@ -287,22 +314,22 @@ This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it
 ## 4.2. **Selecting Things**
 
 ([Home](#1-table-of-contents))
-### 4.2.1. **Selecting Workbooks**
+### 4.2.1. ***Selecting Workbooks***
 
 ([Home](#1-table-of-contents))
-#### 4.2.1.1. **Activating the current workbook (where the code resides)**
+#### 4.2.1.1. Activating the current workbook (where the code resides)
 `ThisWorkbook.Activate`
 
 ([Home](#1-table-of-contents))
-#### 4.2.1.2. **Activate a workbook to the name of `My Macro Book`**
+#### 4.2.1.2. Activate a workbook to the name of `My Macro Book`
 `Workbooks("My Work Book").Activate`
 
 ([Home](#1-table-of-contents))
-#### 4.2.1.3. **Activate the 2nd workbook (or specifically, the workbook in index position `2`)**
+#### 4.2.1.3. Activate the 2nd workbook (or specifically, the workbook in index position `2`)
 `Workbooks(2).Activate`
 
 ([Home](#1-table-of-contents))
-### 4.2.2. **Selecting Cells**
+### 4.2.2. ***Selecting Cells***
 
 ([Home](#1-table-of-contents))
 #### 4.2.2.1. **Select a single cell `A2`**
@@ -310,7 +337,7 @@ This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it
 `Range("A2").Select`
 
 ([Home](#1-table-of-contents))
-#### 4.2.2.2. **Select a group of cells that are not next to each other **
+#### 4.2.2.2. Select a group of cells that are not next to each other
 `Range("B2,C8,E9").Select`
 
 `Range("B2,C8,E9:E20").Select`
@@ -321,15 +348,15 @@ This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it
 `Range("A2", "B10").Select`
 
 ([Home](#1-table-of-contents))
-#### 4.2.2.4. **Select the last row in column `A` of the dataset, and then moves `6` rows down** 
+#### 4.2.2.4. Select the last row in column `A` of the dataset, and then moves `6` rows down 
 `Range("A1").End(xlDown).Offset(6, 0).Select`
 
 ([Home](#1-table-of-contents))
-#### 4.2.2.5. **Select the last row in column `C` of the dataset, and then moves `6` rows down** 
+#### 4.2.2.5. Select the last row in column `C` of the dataset, and then moves `6` rows down
 `Range("C1").End(xlDown).Offset(-6, 0).Select`
 
 ([Home](#1-table-of-contents))
-#### 4.2.2.6. **Select the entire region of cells** 
+#### 4.2.2.6. Select the entire region of cells
 This is equivalent to hitting `CTRL + SHIFT + DOWN + RIGHT` on your keyboard:
 
 `ActiveCell.CurrentRegion.Select`
@@ -339,7 +366,7 @@ This is also equivalent to the following command:
 `Range("A2", Range("A2").End(xlDown).End(xlToRight)).Select`
 
 ([Home](#1-table-of-contents))
-#### 4.2.2.7. **Select entire column that `A2` is on (column `A`)**
+#### 4.2.2.7. Select entire column that `A2` is on (column `A`)
 
 `Range("A2").EntireColumn.Select`
 
@@ -348,7 +375,7 @@ This is also equivalent to the following command:
 `Range("A2").EntireRow.Select`
 
 ([Home](#1-table-of-contents))
-### 4.2.3. **Selecting Sheets**
+### 4.2.3. ***Selecting Sheets***
 
 A `Sheet` and a `Worksheet` are related, but cannot be used interchangeably. A `Sheet` is any Excel sheet, whereas a `Worksheet` is only a regular Excel worksheet. For example, a chart is a `Sheet` but is not a `Worksheet`.
 
@@ -367,7 +394,7 @@ A `Sheet` and a `Worksheet` are related, but cannot be used interchangeably. A `
 `ActiveSheet.Previous.Select`
 
 ([Home](#1-table-of-contents))
-### 4.2.4. **Selecting Worksheets**
+### 4.2.4. ***Selecting Worksheets***
 
 #### 4.2.4.1. **Select the `Task 2 Min and Max` tab**
 `Worksheets("Task 2 Min and Max").Activate`
@@ -406,13 +433,13 @@ Range("M4:D100").PasteSpecial
 
 `Range("D40:F40").Formula = "=65 - A2"`
 
-Please note that when you do this, the formula is `F28` is interpreted **relatively**. For example, if your formula is `= 65 - A2`, the first row will have `= 65 - A2`, but the second row will have `= 65 - A3` and the third row will have `= 65 - A4`.
+Please note that when you do this, the formula is `F28` is interpreted **relatively**. For example, if your formula is `= 65 - A2`, the first row will have `= 65 - A2`, but the sec ond row will have `= 65 - A3` and the third row will have `= 65 - A4`.
 
 ([Home](#1-table-of-contents))
 #### 4.3.0.5. Assign each cell from `D40` to `F40` the formula found in cell `F28`
 `Range("D40:F40").Formula = Range("F28").Formula`
 
-### 4.3.1. **Formulas with Row Column Notation**
+### 4.3.1. ***Formulas with Row Column Notation***
 
 #### 4.3.1.1. Assign the active cell the formula found in `G2` using Row Column notation
 
