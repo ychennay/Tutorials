@@ -21,6 +21,7 @@
 - [**Basic Functions**](#basic-functions)
     - [**Working With New Sheets and Workbooks**](#working-with-new-sheets-and-workbooks)
         - [***Sheets***](#sheets)
+            - [Delete the worksheet `Sheet2`](#delete-the-worksheet-sheet2)
             - [Save the name of the active sheet to a variable](#save-the-name-of-the-active-sheet-to-a-variable)
             - [Add a new sheet after the active sheet](#add-a-new-sheet-after-the-active-sheet)
             - [Change sheet orientation to landscape](#change-sheet-orientation-to-landscape)
@@ -46,7 +47,7 @@
         - [***Selecting Cells***](#selecting-cells)
             - [**Select a single cell `A2`**](#select-a-single-cell-a2)
             - [Select a group of cells that are not next to each other](#select-a-group-of-cells-that-are-not-next-to-each-other)
-            - [**Select the cells from `A2` to `B10`**](#select-the-cells-from-a2-to-b10)
+            - [Select the cells from `A2` to `B10`](#select-the-cells-from-a2-to-b10)
             - [Select the last row in column `A` of the dataset, and then moves `6` rows down](#select-the-last-row-in-column-a-of-the-dataset-and-then-moves-6-rows-down)
             - [Select the last row in column `C` of the dataset, and then moves `6` rows down](#select-the-last-row-in-column-c-of-the-dataset-and-then-moves-6-rows-down)
             - [Select the entire region of cells](#select-the-entire-region-of-cells)
@@ -223,12 +224,15 @@ myNewStringVar = ActiveCell.Value
 Range("C1").Value = myNewStringVar
 ```
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 # **Basic Functions**
 
 ## **Working With New Sheets and Workbooks**
 
 ### ***Sheets***
+
+#### Delete the worksheet `Sheet2`
+`Worksh­eet­s("S­hee­t2").Delete`
 
 #### Save the name of the active sheet to a variable
 ```
@@ -267,7 +271,7 @@ Temp = Application.WorksheetFunction.VLookup _
 
 ```
 
-([Home](#1-table-of-contents))
+([Home](#table-of-contents))
 
 ### ***Address of cells and ranges***
 
@@ -353,7 +357,7 @@ This assigns the Excel formula to `M3` (take the value of `M2` and add `2` to it
 `Range("B2,C8,E9:E20").Select`
 
 ([Home](#1-table-of-contents))
-#### **Select the cells from `A2` to `B10`**
+#### Select the cells from `A2` to `B10`
 
 `Range("A2", "B10").Select`
 
