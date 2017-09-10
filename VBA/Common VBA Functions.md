@@ -3,7 +3,7 @@
 <!-- TOC -->
 
 - [Table of Contents](#table-of-contents)
-- [**Formatting**](#formatting)
+    - [**Formatting**](#formatting)
         - [***Color***](#color)
             - [Set the background color of cell `A1` to red](#set-the-background-color-of-cell-a1-to-red)
         - [**Font**](#font)
@@ -58,11 +58,12 @@
             - [Select the previous sheet in your workbook](#select-the-previous-sheet-in-your-workbook)
         - [***Selecting Worksheets***](#selecting-worksheets)
             - [**Select the `Task 2 Min and Max` tab**](#select-the-task-2-min-and-max-tab)
-        - [**2.1.4. Copying / Pasting Things**](#214-copying--pasting-things)
+        - [**Copying / Pasting Things**](#copying--pasting-things)
             - [Copy the value in cell `M3`](#copy-the-value-in-cell-m3)
             - [Copy and paste value from cell `A1` to `B1` all in one line](#copy-and-paste-value-from-cell-a1-to-b1-all-in-one-line)
             - [Assign the cell `M2` the value `10`. Assign the cell `M3` the formula `=SUM(M2,2)`, which should equal `12`. Copy this formula. Paste this formula from `M4` down to `M100`.](#assign-the-cell-m2-the-value-10-assign-the-cell-m3-the-formula-summ22-which-should-equal-12-copy-this-formula-paste-this-formula-from-m4-down-to-m100)
     - [**Formulas**](#formulas)
+        - [***General***](#general)
             - [Assigns each cell from `D40` to `F40` the formula found in cell `F28`](#assigns-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
             - [Assigns each cell from `D40` to `F40` a particular formula](#assigns-each-cell-from-d40-to-f40-a-particular-formula)
             - [Assign each cell from `D40` to `F40` the formula found in cell `F28`](#assign-each-cell-from-d40-to-f40-the-formula-found-in-cell-f28)
@@ -104,7 +105,7 @@
 
 <!-- /TOC -->
 
-# **Formatting**
+## **Formatting**
 
 ### ***Color***
 
@@ -409,7 +410,7 @@ A `Sheet` and a `Worksheet` are related, but cannot be used interchangeably. A `
 `Worksheets("Task 2 Min and Max").Activate`
 
 ([Home](#1-table-of-contents))
-### **2.1.4. Copying / Pasting Things**
+### **Copying / Pasting Things**
 
 ([Home](#1-table-of-contents))
 #### Copy the value in cell `M3`
@@ -433,6 +434,8 @@ Range("M4:D100").PasteSpecial
 ([Home](#1-table-of-contents))
 
 ## **Formulas**
+
+### ***General***
 
 #### Assigns each cell from `D40` to `F40` the formula found in cell `F28` 
 `Range("D40:F40").Formula = Range("F28").Formula`
