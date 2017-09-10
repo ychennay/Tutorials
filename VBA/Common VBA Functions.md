@@ -12,7 +12,7 @@
             - [2.0.2.3. Set the cell `B4` to be both bold and italic:](#2023-set-the-cell-b4-to-be-both-bold-and-italic)
 - [3. **Variables**](#3-variables)
     - [3.1. **Types of Variables**](#31-types-of-variables)
-    - [3.2. ** Declaring Variables**](#32--declaring-variables)
+    - [3.2. **Declaring Variables**](#32-declaring-variables)
             - [3.2.0.4. Force VBA to explicitly declare variables](#3204-force-vba-to-explicitly-declare-variables)
         - [3.2.1. ***Module Level***](#321-module-level)
             - [3.2.1.1. Declare a `Project` Level variable](#3211-declare-a-project-level-variable)
@@ -152,7 +152,7 @@ There are different levels of **Scope** for a variable. Scope means what context
 |  **Variant**  | Any of the above. | At least 16 bytes.
 
 ([Home](#1-table-of-contents))
-## 3.2. ** Declaring Variables**
+## 3.2. **Declaring Variables**
 
 #### 3.2.0.4. Force VBA to explicitly declare variables
 
