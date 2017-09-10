@@ -84,6 +84,7 @@
             - [Read the text from cell `A1` and display it inside the message box](#read-the-text-from-cell-a1-and-display-it-inside-the-message-box)
             - [Ask the user if they would like to proceed or not in a message box](#ask-the-user-if-they-would-like-to-proceed-or-not-in-a-message-box)
         - [***Dialog Boxes***](#dialog-boxes)
+            - [Save one tab of a multi-tab workbook to a new file using the `Save As` dialog box](#save-one-tab-of-a-multi-tab-workbook-to-a-new-file-using-the-save-as-dialog-box)
         - [***Input Boxes***](#input-boxes)
             - [Ask a user for their first and last name in an input box and greet them with text in cell `C3`.](#ask-a-user-for-their-first-and-last-name-in-an-input-box-and-greet-them-with-text-in-cell-c3)
             - [Ask user to enter their name, and validate that input was entered using `IF` condition](#ask-user-to-enter-their-name-and-validate-that-input-was-entered-using-if-condition)
@@ -547,9 +548,44 @@ End If
 ```
 
 ([Home](#1-table-of-contents))
-
 ### ***Dialog Boxes***
 
+#### Save one tab of a multi-tab workbook to a new file using the `Save As` dialog box
+
+```
+Sub SaveAFile()
+
+Dim NewBook As Workbook
+Dim FileName As String
+Dim SheetName As String
+Dim TheRange As Range
+
+Set TheRange = Range("A1").CurrentRegion
+SheetName = ActiveSheet.Name
+
+Application.SheetsInNewWorkbook = 1
+Set NewBook = Workbooks.Add
+Application.SheetsInNewWorkbook = 3 
+
+TheRange.Copy Destination:=Worksheets("Sheet1").Range("A1")
+ActiveSheet.Name = SheetName
+
+With Application.FileDialog(msoFileDialogSaveAs)
+    .Title = "Please save the export"
+    .Show
+    If .SelectedItems.count = 0 Then
+        MsgBox("A filename wasn't entered.")
+        Newbook.Close savechanges:=False
+        Exit Sub
+    Else
+    FileName = .SelectedItem(1)
+    End If
+End With
+
+NewBook.SaveAs filename:=FileName
+NewBook.Close
+```
+([Home](#1-table-of-contents))
 
 ### ***Input Boxes***
 
