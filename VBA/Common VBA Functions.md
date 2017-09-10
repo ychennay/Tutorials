@@ -102,6 +102,8 @@
         - [***If Statements***](#if-statements)
             - [Check if the active cell has a value of `5`](#check-if-the-active-cell-has-a-value-of-5)
             - [Check whether or not the user clicked `Yes` in a message box](#check-whether-or-not-the-user-clicked-yes-in-a-message-box)
+        - [Select Case](#select-case)
+            - [Check the value of cell `A1`](#check-the-value-of-cell-a1)
 
 <!-- /TOC -->
 
@@ -174,9 +176,7 @@ This means that if you attempt to run the code below:
 
 ```
 Sub SubC()
-
 myNewVariable = "Hello"
-
 End SubC()
 ```
 
@@ -540,9 +540,7 @@ Keep in mind that when a user clicks `Yes` inside a message box, the actual resp
 
 ```
 Dim UserResponse As String
-
 UserResponse = MsgBox("Would you like to proceeed?", vbYesNo, "Proceed?")
-
 If UserResponse = 6 Then
     MsgBox("The user's response was yes.")
 Else
@@ -572,7 +570,6 @@ Application.SheetsInNewWorkbook = 3
 
 TheRange.Copy Destination:=Worksheets("Sheet1").Range("A1")
 ActiveSheet.Name = SheetName
-
 With Application.FileDialog(msoFileDialogSaveAs)
     .Title = "Please save the export"
     .Show
@@ -750,3 +747,16 @@ If YesOrNo = vbYes Then
     MsgBox("You clicked yes!)
 End If
 ```
+
+### Select Case
+
+#### Check the value of cell `A1` 
+
+```
+Select Case Range("A1").Value
+    Case 0 To 10: Range("A2).Value = "A Small Number"
+    Case 11 To 20: Range("A2).Value = "A Kinda Small Number"
+    Case 21 To 30: Range("A2).Value = "A Medium Number"
+    Case 31 To 40: Range("A2).Value = "A Large Number"
+```
+([Home](#1-table-of-contents))
