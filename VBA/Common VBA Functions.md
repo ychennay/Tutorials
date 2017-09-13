@@ -5,7 +5,9 @@
 - [Table of Contents](#table-of-contents)
     - [**Formatting**](#formatting)
         - [***Color***](#color)
+            - [Color Palette Table](#color-palette-table)
             - [Set the background color of cell `A1` to red](#set-the-background-color-of-cell-a1-to-red)
+            - [Set the background color of an entire row of cells to a certain color](#set-the-background-color-of-an-entire-row-of-cells-to-a-certain-color)
         - [**Font**](#font)
             - [Set the font in `A9` to bold](#set-the-font-in-a9-to-bold)
             - [Set the font in `A2` to be regular](#set-the-font-in-a2-to-be-regular)
@@ -113,10 +115,20 @@
 
 ### ***Color***
 
+#### Color Palette Table
+
+![Colors](/VBA/Images/colors_vba.gif)
+
 #### Set the background color of cell `A1` to red
 
 `Range("A1").Interior.Color = vbRed`
 
+([Home](#table-of-contents))
+#### Set the background color of an entire row of cells to a certain color
+
+`Range("A1").EntireRow.Interior.Color = vbRed`
+
+([Home](#table-of-contents))
 ### **Font**
 
 #### Set the font in `A9` to bold
