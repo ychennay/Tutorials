@@ -4,7 +4,7 @@ Finish the rest of the macro. For both **`Consolidate Data`** and **`July`** tab
 
 Make sure your macro(s) meet the following requirements:
 
-* Try to **write the code without looking at the example code** as much as possible. If you're stuck, look at the **`Common VBA Functions`** document, and then [Google](www.google.com) or [StackOverflow](www.stackoverflow.com). If you're still stuck, then you may refer to the example code in **`In Session Subs.md`**. Of course, your code will probably look similar since there's only a finite number of ways to write these macros, but the whole point is to practice yourself. Anyone can copy/paste code and hit the run button.
+* Try to **write the code without looking at the example code** as much as possible. If you're stuck, look at the **`Common VBA Functions`** document, and then [Google](http://www.google.com) or [StackOverflow](http://www.stackoverflow.com). If you're still stuck, then you may refer to the example code in **`In Session Subs.md`**. Of course, your code will probably look similar since there's only a finite number of ways to write these macros, but the whole point is to practice yourself. Anyone can copy/paste code and hit the run button.
 * Your macro should **execute on both tabs** (remember that you can use **`Worksheet("NameOfYourSheet").Activate`** to switch to another sheet.)
 * Your macro should be able to **work regardless of the size of data (number of rows) or number of variables (# of columns)**. Make sure to use **relative**, as opposed to **absolute** references. 
 * You should have a main **`Sub()`** that calls other subroutines to organize your code more logically. Remember that you can execute other subs by writing
