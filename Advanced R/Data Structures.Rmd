@@ -112,4 +112,11 @@ test2 <- list(v1=5, v2=list(2983, 1890), v3=c(3, 119))
 unlist(test2)
 ```
 
-##### **5. Why is `1 == "1"` true? Why is `-1 < FALSE` true? Why is `"one" < 2` false?**
+##### ** 5. Why is `1 == "1"` true? Why is `-1 < FALSE` true? Why is `"one" < 2` false? **
+
+During the evaluation fo `1 == "1"`,  the integer `1` is converted into its "lower" form, a character representation. Therefore, what is actually being evaluated is
+
+``` {r unlist_example3}
+"1" == "1"
+```
+
