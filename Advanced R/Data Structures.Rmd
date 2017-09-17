@@ -47,7 +47,7 @@ is.character(vec3) # TRUE
 str(vec3)
 ```
 
-In the final example, when 
+The function `is.vector()` does not actually test if an object is a vector. It returns `TRUE` only wif the object is a vector with no attributes apart from names. That is why you should use `is.atomic(x) || is.list(x)` to test if an object is actually a vector.
 
 #### **3. Test your knowledge of vector coercion rules by predicting the output of the following uses of `c()`:**
 
@@ -80,4 +80,36 @@ typeof(z) # still integer
 object.size(z) # 440 bytes (on win64) 
 ```
 
-#### **Why do you need to use `unlist()` to convert a list to an atomic vector? Why does `as.vector()` work?**
+#### **4. Why do you need to use `unlist()` to convert a list to an atomic vector? Why does `as.vector()` not work?**
+
+Compare the two outputs when attempting to convert a list into an atomic vector:
+
+```{r unlist}
+vec2 <- list(1,2,3)
+unlist(vec2)
+as.vector(vec2)
+
+```
+
+As you can see, `as.vector` has not actually "flattened" the list. It's made a vector of three mini-lists. As a side note, the notation `[[1]]` can be confusing. This [StackOverflow answer](https://stackoverflow.com/questions/11415801/r-language-bracket-notation) explains that `[[ ]]`
+
+```
+extracts a single element by name or position from a list or data frame. For example, iris[["Sepal.Length"]] extracts the column Sepal.Length from the data frame iris; iris[[2]] extracts the second element from iris.
+```
+Thus, the element itself it is still a list:
+```{r unlist_example}
+typeof(as.vector(vec2)[1])
+```
+
+Moreover, `unlist()` wil attempt to preserve naming information as much as possible, as [this example](http://rfunction.com/archives/2238) shows:
+
+```{r unlist_example2}
+test1 <- list(5, "b", 12)
+unlist(test1)
+
+test2 <- list(v1=5, v2=list(2983, 1890), v3=c(3, 119))
+
+unlist(test2)
+```
+
+##### **5. Why is `1 == "1"` true? Why is `-1 < FALSE` true? Why is `"one" < 2` false?**
