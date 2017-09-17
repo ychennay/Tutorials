@@ -16,6 +16,7 @@ Call NameOfAnotherSub
 
 * Your macro should end by alerting the user that it has completed with **`You're Done!`** or another message of your choosing using a **`Message Box`**.
 
+
 ### Challenge:
 
 Look at the example in the sub **`FindHighValueTransactions()`** in the **`In Session Subs.md`** file to see how I highlighted a column for high (defined as above `$50`) and low (defined as under **`$5`**) values. The code uses a **`DO WHILE`** loop: the loop continues until the statement is false. In the example, it keeps looping until **`ActiveCell.Value <> ""`**, which can be translated to until the active cell is an empty value. Then, without copying, write your own code to search through the **`Average Unit Price`** column and highlight any transactions that are under the **`20th percentile`** and above the **`80th percentile`**. 
