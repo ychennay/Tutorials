@@ -8,7 +8,7 @@ Range() creates a new `Range` object. There's many ways of using `Range()`:
 
 ### 1. Range(String)
 
-You can use `Range()` with a `String` address of a cell: `Range("A1").
+You can use `Range()` with a `String` address of a cell: `Range("A1")`, for instance.
 
 ### 2. Range(String, Range)
 
