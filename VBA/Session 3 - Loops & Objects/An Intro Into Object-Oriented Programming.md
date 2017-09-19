@@ -26,8 +26,40 @@ Each variable (`employeeName`, `employeeSalary`, `primitiveVar1`, `primitiveVar2
 
 On the other hand, an **`Object`** in programming is a **collection of primitive data types** that represents a real-world entity. It is an `advanced data type` because it combines smaller data types together, and because **it can perform actions** (essentially, it can run `Sub`s itself!).
 
+### Objects Have (Multiple) Properties
+
 You've been working with Objects already in VBA. For example, take this familiar Object:
 
 `ActiveCell`
 
-When you type `ActiveCell.Value = 5`, you are setting the  
+When you type `ActiveCell.Font`, you're actually accessing the `Font` object of `ActiveCell`. And this `Font` object has a primitive property called `Bold`, which is a `Boolean` (either a `True` or `False`).
+
+So when you type `ActiveCell.Font.Bold = True`, what you're actually saying is 
+
+*Take the `ActiveCell` object, and give me its `Font` object. Inside the `Font` object, set its primitive property `Bold` to `True`.*
+
+What about this?
+
+`ActiveCell.Interior.ColorIndex = 43`
+
+This sets the `ColorIndex` integer primitive property of `Interior`, which is itself a property of `ActiveCell` to the value of 43.
+
+### Objects Can Perform Actions
+
+Objects not only have multiple primitive properties, but they can also ** do stuff **. It's as if they have their own `Sub`s written just for them.
+
+For example, `ActiveCell.Delete`. This `ActiveCell` object can perform an action called `Delete`. It deletes its current value. That's just one of the **many** actions that it can perform:
+```
+ActiveCell.Cut
+ActiveCell.Paste
+ActiveCell.Activate
+ActiveCell.Find
+```
+
+Here's a table of the `ActiveCell` object, and its `properties` and `methods`:
+
+![Methods](/VBA/Images/activecell.png)
+
+An action that a object can perform is called a **`method`**. In VBA, you can tell which attributes of an object are methods and which ones are properties by looking at the icon:
+
+![Methods](/VBA/Images/methods.png)
