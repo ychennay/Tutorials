@@ -83,7 +83,7 @@ An action that a object can perform is called a **`method`**. In VBA, you can te
 
 this is essentially telling the computer, *hey, I want you to reserve a block of disk space and memory to store a numerical value, and call this `MyVar`*.
 
-However, it does not actually provide `MyVar` with a variable. You have to next **assign** the variable a value:
+However, it does not actually provide `MyVar` with a value. You have to next **assign** the variable a value:
 
 ```
 Dim strVariable As String
