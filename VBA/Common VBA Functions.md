@@ -13,7 +13,7 @@
             - [Set the font in `A2` to be regular](#set-the-font-in-a2-to-be-regular)
             - [Set the cell `B4` to be both bold and italic:](#set-the-cell-b4-to-be-both-bold-and-italic)
 - [**Variables**](#variables)
-    - [**Types of Variables**](#types-of-variables)
+    - [**Types of Primitive Variables**](#types-of-primitive-variables)
     - [**Declaring Variables**](#declaring-variables)
             - [Force VBA to explicitly declare variables](#force-vba-to-explicitly-declare-variables)
         - [***Module Level***](#module-level)
@@ -163,7 +163,7 @@ There are different levels of **Scope** for a variable. Scope means what context
 - **Module Level**: this variable can be used in all the subroutines in the current module. You declare the variable the same way as the **Procedure Level**, but place it before all of the `Sub()` declarations. 
 - **Project Level**: this can be used anywhere in the current project. You declare this type of variable with the keyword `Public`.
 
-## **Types of Variables**
+## **Types of Primitive Variables**
 
 | **Type** | **Description** | **Memory Used**
 | ------------- | ------------- | ------------- |
@@ -175,7 +175,7 @@ There are different levels of **Scope** for a variable. Scope means what context
 |  **Currency**  | Used to represent dollar values from **-922,337,203,685,477.5808** to **-922,337,203,685,477.5807**  | 8 bytes |
 |  **Date**  | Used to represent dates from **January 1st, 100 CE** to **December 31st, 9999 CE**  | 8 bytes |
 |  **String**  | Text used to store names, descriptions, etc.  | 10 bytes in addition to string length |
-|  **Variant**  | Any of the above. | At least 16 bytes.
+|  **Variant**  | Any of the above. Because it is the most flexible and can be anything, it also takes up the most space, since VBA has to reserve a lot of room in case it's a large data type. | At least 16 bytes.
 
 ([Home](#table-of-contents))
 ## **Declaring Variables**
