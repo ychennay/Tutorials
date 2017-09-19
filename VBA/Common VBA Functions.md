@@ -55,6 +55,8 @@
             - [Select the entire region of cells](#select-the-entire-region-of-cells)
             - [Select entire column that `A2` is on (column `A`)](#select-entire-column-that-a2-is-on-column-a)
             - [Select entire row that `A2` is on (row `2`)](#select-entire-row-that-a2-is-on-row-2)
+            - [Select from the active cell down to the last row](#select-from-the-active-cell-down-to-the-last-row)
+            - [Select fom the active cell to the last column and save it as a `Range` object called `MyRange`](#select-fom-the-active-cell-to-the-last-column-and-save-it-as-a-range-object-called-myrange)
         - [***Selecting Sheets***](#selecting-sheets)
             - [Select a sheet by tab name (`Sheets2`)](#select-a-sheet-by-tab-name-sheets2)
             - [Select the next sheet in your workbook](#select-the-next-sheet-in-your-workbook)
@@ -400,6 +402,21 @@ This is also equivalent to the following command:
 ([Home](#table-of-contents))
 #### Select entire row that `A2` is on (row `2`) 
 `Range("A2").EntireRow.Select`
+
+([Home](#table-of-contents))
+#### Select from the active cell down to the last row
+
+```
+Range(ActiveCell, ActiveCell.End(xlDown))
+```
+
+([Home](#table-of-contents))
+#### Select fom the active cell to the last column and save it as a `Range` object called `MyRange`
+
+```
+Dim MyRange As Range
+Set MyRange = Range(ActiveCell, ActiveCell.End(xlDown))
+```
 
 ([Home](#table-of-contents))
 ### ***Selecting Sheets***

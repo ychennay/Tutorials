@@ -1,3 +1,14 @@
+<!-- TOC -->
+
+- [An Intro Into Object-Oriented Programming](#an-intro-into-object-oriented-programming)
+    - [Primitives](#primitives)
+    - [Objects](#objects)
+        - [Objects Have (Multiple) Properties](#objects-have-multiple-properties)
+        - [Objects Can Perform Actions](#objects-can-perform-actions)
+        - [Using `Dim` vs `Set`](#using-dim-vs-set)
+
+<!-- /TOC -->
+
 # An Intro Into Object-Oriented Programming
 
 One of the most important concepts to learn in computer science and programming
@@ -63,3 +74,36 @@ Here's a table of the `ActiveCell` object, and its `properties` and `methods`:
 An action that a object can perform is called a **`method`**. In VBA, you can tell which attributes of an object are methods and which ones are properties by looking at the icon:
 
 ![Methods](/VBA/Images/methods.png)
+
+### Using `Dim` vs `Set`
+
+`Dim` is used to **declare** a primitive variable or object. When you write 
+
+`Dim MyVar As Double`
+
+this is essentially telling the computer, *hey, I want you to reserve a block of disk space and memory to store a numerical value, and call this `MyVar`*.
+
+However, it does not actually provide `MyVar` with a variable. You have to next **assign** the variable a value:
+
+```
+Dim strVariable As String
+strVariable = "Yu Chen"
+```
+
+For Objects, it's very similar, except for one key difference - you need to use the `Set` operator:
+
+```
+Dim myRange as Range
+Set myRange = Sheet1.Range("A1")
+```
+
+What type of Object is being declared here? A `Range` object - you know, the a collection of cells in an Excel worksheet. When you use `Set`, you need to make sure that both the object on the left and right side of the `=` are the `same type of object`.
+
+You can check what type of object by using `TypeName()`:
+
+```
+Dim Ctrl As Control = New TextBox
+MsgBox(TypeName(Ctrl))
+```
+
+One final note: do not use `Set` to assign primitive variables values. It won't work! `Set` is only used to create new Objects!
