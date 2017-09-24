@@ -99,6 +99,7 @@ ENV/
 .spyproject
 
 # Sublime workspace
+
 *.sublime-workspace
 *.glue
 

@@ -4,6 +4,10 @@
 
 - [Table of Contents](#table-of-contents)
     - [**Formatting**](#formatting)
+        - [***Hiding/Showing***](#hidingshowing)
+            - [Hide Column `3`](#hide-column-3)
+            - [Insert a row](#insert-a-row)
+            - [Insert a dynamic number of rows based on categories mentioned in a table](#insert-a-dynamic-number-of-rows-based-on-categories-mentioned-in-a-table)
         - [***Color***](#color)
             - [Color Palette Table](#color-palette-table)
             - [Set the background color of cell `A1` to red](#set-the-background-color-of-cell-a1-to-red)
@@ -109,12 +113,62 @@
             - [Check whether or not the user clicked `Yes` in a message box](#check-whether-or-not-the-user-clicked-yes-in-a-message-box)
         - [Select Case](#select-case)
             - [Check the value of cell `A1`](#check-the-value-of-cell-a1)
+- [Advanced](#advanced)
+    - [File Management](#file-management)
+        - [Moving Files](#moving-files)
+            - [Copying a file from the `C:Temp` folder to the `D:Job` folder](#copying-a-file-from-the-ctemp-folder-to-the-djob-folder)
 - [Debugging](#debugging)
 
 <!-- /TOC -->
 
 ## **Formatting**
 
+### ***Hiding/Showing*** 
+
+#### Hide Column `3`
+
+`columns(3).hidden = True`
+
+([Home](#table-of-contents))
+#### Insert a row
+
+The following sub will insert a row at `Row 2` and then three rows from `3`.
+
+***Before:***
+![InsertRows](/VBA/Images/insertRowsBefore.png)
+
+```
+Sub sbInsertingRows()
+'Inserting a Row at at Row 2
+Range("A2").EntireRow.Insert
+'
+'Inserting 3 Rows from 3
+Rows("3:5").EntireRow.Insert
+End Sub
+```
+
+***After:***
+![InsertRows](/VBA/Images/insertRowsAfter.png)
+
+([Home](#table-of-contents))
+#### Insert a dynamic number of rows based on categories mentioned in a table
+
+```
+Sub sbInsertingRowsCaseStudy()
+Dim iCntr, jCntr
+For iCntr = 2 To 4 ' for each category
+'Find the start row of category assuming maximum items are around 3000
+startRow = Application.WorksheetFunction.Match(Cells(iCntr, 1), Range("A16:A3300"), 0) + 15 
+For jCntr = 1 To Cells(iCntr, 2) 'print items
+Rows(startRow + 2).EntireRow.Insert
+Cells(startRow + 2, 2) = "Item " & Cells(iCntr, 2) - jCntr + 1
+Next
+Next
+End Sub
+```
+![InsertRows](/VBA/Images/insertRowsCategories.png)
+
+([Home](#table-of-contents))
 ### ***Color***
 
 #### Color Palette Table
@@ -794,6 +848,50 @@ Select Case Range("A1").Value
     Case 31 To 40: Range("A2).Value = "A Large Number"
 ```
 ([Home](#table-of-contents))
+
+# Advanced
+
+## File Management
+
+### Moving Files
+
+#### Copying a file from the `C:Temp` folder to the `D:Job` folder
+
+In this example from [AnalysisTabs.com](https://analysistabs.com/excel-vba/copy-files-one-location-another-folder-directory/), the author shows a great example of moving files from one location to another.
+
+```
+'In this Example I am Copying the File From "C:Temp" Folder to "D:Job" Folder
+Sub sbCopyingAFile()
+'Declare Variables
+Dim FSO
+Dim sFile As String
+Dim sSFolder As String
+Dim sDFolder As String
+```
+
+Here, `sFile` is the name of the file you'd like to copy (for example, `Sample.xls`). For reference, the `s` in the `sFile` variable will stand for "source" (where you begin your file transfer). The `sSFolder` is the source directory, in this case `C:\Temp\`. The `sDFolder` is the destination folder, in this case `D:\Job\`. 
+
+```
+'This is Your File Name which you want to Copy
+sFile = "Sample.xls"
+'Change to match the source folder path
+sSFolder = "C:\Temp\"
+'Change to match the destination folder path
+sDFolder = "D:\Job\"
+'Create Object
+Set FSO = CreateObject("Scripting.FileSystemObject")
+'Checking If File Is Located in the Source Folder
+If Not FSO.FileExists(sSFolder & sFile) Then
+MsgBox "Specified File Not Found", vbInformation, "Not Found"
+'Copying If the Same File is Not Located in the Destination Folder
+ElseIf Not FSO.FileExists(sDFolder & sFile) Then
+FSO.CopyFile (sSFolder & sFile), sDFolder, True
+MsgBox "Specified File Copied Successfully", vbInformation, "Done!"
+Else
+MsgBox "Specified File Already Exists In The Destination Folder", vbExclamation, "File Already Exists"
+End If
+End Sub
+```
 
 # Debugging
 
