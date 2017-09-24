@@ -98,6 +98,10 @@ ENV/
 .spyderproject
 .spyproject
 
+# Sublime workspace
+.sublime-workspace
+.glue
+
 # Rope project settings
 .ropeproject
 
