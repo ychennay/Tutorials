@@ -155,7 +155,38 @@ This subroutine then iterates through each of the values in the `Current STI` co
 
 ```
 Sub generateBinCounts()
+ 
+bins.Offset(1, 0).Select
+ 
+Set binsRange = Range(ActiveCell, ActiveCell.End(xlDown))
+ 
+ActiveCell.Offset(0, 1).Select
+ 
+For Each binValue In binsRange
+ 
+        Count = 0
+        low = binValue.Value
+        high = binValue.Offset(1, 0).Value
+        For Each stiValue In rangeCurrentSTI.Cells
+            If stiValue.Value > low And stiValue.Value < high Then
+                Count = Count + 1
+            End If
+ 
+            Next stiValue
+ 
+        ActiveCell.Value = Count
+        ActiveCell.Offset(1, 0).Select
+ 
+    Next binValue
+ 
+End Sub
+```
+Finally, this subroutine will generate the actual chart:
 
+```
+
+Sub generateHistogram()
+ 
     Dim countsRange As Range
     Dim co As ChartObject
     Dim ct As Chart
@@ -189,9 +220,13 @@ Sub generateBinCounts()
         ser1.ChartType = xlColumnClustered
        
     End With
-
+ 
+ 
+ 
 End Sub
+ 
 ```
+
 
 You need this sub in order to run all the above together:
 
