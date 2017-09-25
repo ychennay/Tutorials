@@ -784,8 +784,6 @@ Dim LoopCounter As Integer
 
 Sub ForLoopExample()
 Range("A1").Select
-
-
 For LoopCounter = 1 To 20
 
     ActiveCell.Offset(1,0).Select
@@ -855,6 +853,13 @@ Select Case Range("A1").Value
 
 ### Moving Files
 
+A lot of the features related to moving and copying files will use the `FSO` object. Below is how to create (or more technically, instantiate) the `fso` object - note the lowercase vs. uppercase definition. The `fso` variable below is an object of type `FSO`.
+
+```
+fso = CreateObject("Scripting.FileSystemObject")
+```
+
+
 #### Copying a file from the `C:Temp` folder to the `D:Job` folder
 
 In this example from [AnalysisTabs.com](https://analysistabs.com/excel-vba/copy-files-one-location-another-folder-directory/), the author shows a great example of moving files from one location to another.
@@ -868,21 +873,18 @@ Dim sFile As String
 Dim sSFolder As String
 Dim sDFolder As String
 ```
-
-Here, `sFile` is the name of the file you'd like to copy (for example, `Sample.xls`). For reference, the `s` in the `sFile` variable will stand for "source" (where you begin your file transfer). The `sSFolder` is the source directory, in this case `C:\Temp\`. The `sDFolder` is the destination folder, in this case `D:\Job\`. 
+Here, `sFile` is the name of the file you'd like to copy (for example, `Sample.xls`). For reference, the `s` in the `sFile` variable will stand for "source" (where you begin your file transfer). The `sSFolder` is the source directory, in this case `C:\Temp\`. The `sDFolder` is the destination folder, in this case `D:\Job\`. The `FSO` is an object representing the file to be copied.
 
 ```
-'This is Your File Name which you want to Copy
 sFile = "Sample.xls"
-'Change to match the source folder path
 sSFolder = "C:\Temp\"
-'Change to match the destination folder path
 sDFolder = "D:\Job\"
-'Create Object
 Set FSO = CreateObject("Scripting.FileSystemObject")
+
 'Checking If File Is Located in the Source Folder
 If Not FSO.FileExists(sSFolder & sFile) Then
 MsgBox "Specified File Not Found", vbInformation, "Not Found"
+
 'Copying If the Same File is Not Located in the Destination Folder
 ElseIf Not FSO.FileExists(sDFolder & sFile) Then
 FSO.CopyFile (sSFolder & sFile), sDFolder, True
@@ -892,6 +894,8 @@ MsgBox "Specified File Already Exists In The Destination Folder", vbExclamation,
 End If
 End Sub
 ```
+
+This macro uses the `FSO` (***File System Object***) to check if the file exists in the source directory, and if that is the case, then checks to make sure that the `FSO` is not in the destination directory. If it isn't, then the `FSO` object copies the file.
 
 # Debugging
 
