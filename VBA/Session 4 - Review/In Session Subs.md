@@ -1,3 +1,4 @@
+```
 Dim metrics As Range
 Dim bins As Range
 Dim minCurrentSTI As Double
@@ -144,3 +145,4 @@ Call createBins
 Call generateBinCounts
 
 End Sub
+```
