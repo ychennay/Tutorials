@@ -1,5 +1,21 @@
 # Session 4: Review
 
+Your task is to ultimately write a macro that automatically generates histograms for a particular column. 
+
+**Everyone should be able to complete**:
+
+The macro `calculateMinAndMax`, which is used to automatically find the min and max of a particular column of data. 
+
+**Some people should be able to complete**:
+
+The macro `createBins`, which is used to generate the range of histogram bins used to create the final histogram chart. 
+
+**A few people should be able to complete**:
+
+The macro `generateBinCounts`, which is used to find out how many incumbent data points fall into each bin range.
+
+# Extra Review
+
 Look at the code below and answer the following questions:
 
 1. Summarize in a sentence or two what this macro accomplishes.
