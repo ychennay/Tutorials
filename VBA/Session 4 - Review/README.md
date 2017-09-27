@@ -16,13 +16,15 @@ The macro `generateBinCounts`, which is used to find out how many incumbent data
 
 # Extra Review
 
+If you're one of those nerdy types that willingly wants to practice more VBA, go ahead and submit 
+
 Look at the code below and answer the following questions:
 
 1. Summarize in a sentence or two what this macro accomplishes.
 2. List all the `Objects` and `primitives` inside this macro.
 3. List all `methods` that are called inside this macro.
 4. What happens if `Application.DisplayAlerts = True` and `Application.DisplayAlerts = False` are removed from the macro? Test this on an Excel file with multiple worksheets.
-5. 
+5. Write your own `Sub()` that inserts 3 worksheets into your current workbook, and names the sheets `Base`, `STI`, and `TCC` respectively.
 
 ```
 Sub NameOfSub()
