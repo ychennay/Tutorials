@@ -53,7 +53,7 @@ Finally, the `binsRange` variable is used to define the range of the bins. We'll
 ```
 Dim binsRange As Range
 ```
-
+# Calculate Min and Max
 This first subroutine simply calculates the minimum and maximum of the `Current STI` column, and prints the results out to the right of the data. 
 
 ```
@@ -80,6 +80,7 @@ ActiveCell.Offset(0, 1).Value = maxCurrentSTI
 End Sub
 ```
 
+# Generate Bins
 This next subroutine is more complicated. You need to create bins for the histogram you will create.
 
 ```
@@ -150,6 +151,7 @@ End Sub
 
 ```
 
+# Generate Bin Counts
 This subroutine then iterates through each of the values in the `Current STI` column to find the count in each bin. 
 
 
@@ -181,6 +183,7 @@ For Each binValue In binsRange
  
 End Sub
 ```
+# Generate Histogram
 Finally, this subroutine will generate the actual chart:
 
 ```
