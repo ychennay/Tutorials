@@ -1,6 +1,6 @@
 # Session 6: Headcount
 
-***This will be our final VBA session for now. We've really enjoyed working with and teaching everyone! Please let us know your feedback, recommendations, and ideas for future sessions! ***
+*** This will be our final VBA session for now. We've really enjoyed working with and teaching everyone! Please let us know your feedback, recommendations, and ideas for future sessions! ***
 
 In this exercise, we will work on using an organization's dataset files to calculate headcount per month, ultimately creating a "calendar of headcounts" per month. These headcounts will populate this (currently blank) table:
 
