@@ -114,6 +114,11 @@
         - [Select Case](#select-case)
             - [Check the value of cell `A1`](#check-the-value-of-cell-a1)
 - [Advanced](#advanced)
+    - [Dates](#dates)
+        - [Date Functions](#date-functions)
+            - [Find the current date](#find-the-current-date)
+            - [Find a specific part of the date](#find-a-specific-part-of-the-date)
+            - [Add a specific year, month, day, etc. to a date](#add-a-specific-year-month-day-etc-to-a-date)
     - [File Management](#file-management)
         - [Moving Files](#moving-files)
             - [Copying a file from the `C:Temp` folder to the `D:Job` folder](#copying-a-file-from-the-ctemp-folder-to-the-djob-folder)
@@ -848,6 +853,41 @@ Select Case Range("A1").Value
 ([Home](#table-of-contents))
 
 # Advanced
+
+## Dates
+
+### Date Functions
+
+#### Find the current date
+
+Use the `Date()` function in order to find the current date
+
+#### Find a specific part of the date
+
+Use the DatePart function to find a part of a date:
+
+```
+dates = DatePart("yyyy", "2015/02/01")
+MsgBox(dates)
+```
+
+ **Interval** | **Explanation** |
+| ------------- | ------------- |
+|  **yyyy**  | Will provide the year from a date string |
+|  **q**  | Will provide the quarter from a date string |
+|  **y**  | Will provide the day of year from a date string |
+|  **w**  | Will provide the weekday from a date string |
+|  **h**  | Will provide the hour from a date string |
+|  **n**  | Will provide the minute from a date string |
+|  **s**  | Will provide the second from a date string |
+
+#### Add a specific year, month, day, etc. to a date
+
+Use the `DateAdd()` function:
+
+`DateAdd("yyyy", 2, "2015/10/11")` will return `2017/10/11`. 
+
+The first function argument (`yyyy`) specifies what type of date to return. In this case, it will return the full four digit year of the date string. The second function argument (`2`), tells VBA how many years to add to the date value. In this case, `2015 + 2` = `2017`. 
 
 ## File Management
 
