@@ -21,6 +21,21 @@ Consider the following scenarios:
 - **size**: Our star player typically is more physically dominant than his/her opponents. But what happens when he/she competes against someone even more athletic? Our supercomputer typically handles most data requests with ease, but what if the data we want to process is larger than the disk space or memory capacity of the supercomputer
 -
 
+## Installing Hadoop Standalone Edition
+
+1. Check that Java is installed on your system. Open up `Terminal` and issue the following command:
+
+`java -version`
+
+You should see an output similar to below:
+
+`java version "9.0.1"
+Java(TM) SE Runtime Environment (build 9.0.1+11)
+Java HotSpot(TM) 64-Bit Server VM (build 9.0.1+11, mixed mode)`
+
+If the Java version is older than `1.7`, make sure to download and install the SDK from Oracle.
+
+
 
 ## Notes
 
