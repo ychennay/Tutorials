@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <math.h>
-#define I 4000
-#define J 4000
-#define K 4000
+#define I 400
+#define J 400
+#define K 400
 #define RANDOM_SIZE 10
 
 int operations;
