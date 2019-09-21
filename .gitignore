@@ -1,4 +1,7 @@
 # All data (no data files should ever be pushed upstream!)
+terraform/.terraform/* 
+*.tfstate
+*.tfstate.backup
 *.csv
 *.xls
 *.xlsx
