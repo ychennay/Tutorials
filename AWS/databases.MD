@@ -8,6 +8,7 @@
 
 ## Point in Time Recovery
 
+
 Enabling **point-in-time recovery** generates database change logs written to S3 each 5 minutes. 
 
 ## Service Levels
@@ -17,6 +18,37 @@ AWS gaurantees service levels for provisioned IOPS within a **10%** range for 99
 ## General-Purpose SSD
 
 For each GB of data allocated for storage, RDS will provide 3 IOPs, up to 10,000 IOPS:
+
+* 20GB $\rightarrow$ 60 IOPs
+* * 100GB $\rightarrow$ 300 IOPs
+
+Maximum throughput for gp2 storage type is 1,280 Mbps (160 MBps). Suppose you have MariaDB with **page size of 16KB (.128 Mbs)**:
+
+$$
+1280Mbps\times\frac{1 page}{0.128 Mbs}\times\frac{1IO}{1 page} = 10000 IOPs
+$$
+
+You'll also need to account for how much storage to allocate
+
+$$
+10000 IOPS \times \frac{1GB}{3 IOPS} = 3333.3 GB
+$$
+
+## Credits
+You can also use **burst durations** if you might need high IOPs during certain occasions but not much storage. For volumes under 1TB, you can temporarily burst to 3,000 IOPS.
+$$
+B = \frac{C}{3000 - 3S}
+$$
+$B$ is the burst duration in seconds, $C$ is the credit balance, and $S$ is the storage size in GB. A database instance is credited with an initial balance of 5,400,000 IOPs. For instance, if you have a 300GB volume and a completely full original credit balance,
+
+$$
+B = \frac{5,400,000}{3000 - 3\times300} = 2571
+$$
+Your database could burst for about 2,571 seconds, or roughly 40 minutes. Credit balances are replenished at a rate of 1 IOPS per second per baseline IOPS. If you have a 200GB volume database, your baseline IOPS is 600 IOPS, so to refill your credits up to the maximum of 5,400,000 credits,
+
+$$
+5400000 \times \frac{1 second}{600 IOPS}\times \frac{1 hour}{3600 seconds} = 2.5 hours
+$$
 
 ## Provisioned IOPs
 
