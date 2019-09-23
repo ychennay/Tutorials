@@ -6,11 +6,15 @@
 
 * **RTO (recovery time objective)**: maximum acceptable time to recover data and resume normal operations after failure.
 
-Replication to create read-replicas is **asynchronous**:
+Replication to create read-replicas is **asynchronous**. However, for Multi-AZ deployments, replication between the primary and standby instance is **synchronous**.
 
 ## Point in Time Recovery
 
 Enabling **point-in-time recovery** generates database change logs written to S3 each 5 minutes. 
+
+## Provisioned IOPs
+
+- use for any production application that requires consistent I/O, particularly OLTP workloads
 
 ## Service Levels
 
@@ -18,13 +22,35 @@ AWS gaurantees service levels for provisioned IOPS within a **10%** range for 99
 
 If you need to perform custom service configurations on a database engine, then you are better off deploying AWS EC2 instances and spinning up the database on the instances (since you'll need to SSH in for custom work).
 
+Only MySQL and MariaDB database instances support creating read replicas of read replicas.
+
+The maximum size of an RDS DB instance's storage capacity is 6TB (underlying EBS volume).
+
+AWS RDS instance storage sizes can only be **scaled up, not down**.
+
+Every DB instance has a weekly maintenance window (30 minutes long).
+
+Events that can force the RDS instance to be take offline:
+- security or operating system patching
+- scaling compute operations and class instances
+- major database version upgrades (also cannot revert back to previous version)
+
+Users can elect when to upgrade to **major version releases and most minor upgrades**.
+
+DUring an upgrade for storage size, the following is performed:
+1. Performance maintenance on standby
+2. Failover to standby (now that it is upgraded)
+3. Perform maintenance on former primary
+
 ### Failovers for Multi-AZ
+
+In Multi-AZ deployments, there is always a **primary** and **standby** DB instance. Read/writes go to the primary instance. Automated backups and snapshots are performed against the standby RDS instance.
 
 During failover, the DNS record of the RDS endpoint is updated to point to the IP address of the standby instance. But the endpoint does not change.
 
 To initiate a manual failover, initiate a reboot with a failover on the primary RDS instance. When an automatic failover occurs, you can **subscribe to an SNS topic** to receive a notification for an automatic failover event. 
 
-The new DB instance promoted from a read-replica to primary will inherit the following:
+The **InnoDB** database engine supports RDS read replicas. The new DB instance promoted from a read-replica to primary will inherit the following:
 * backup window (but NOT the maintenance window)
 * backup retention period
 * database parameter group
@@ -143,6 +169,14 @@ Automated backups, read replicas, snapshots can all be encrypted via AES-256. Yo
 2. Specify a KMS encryption key upon restore.
 
 You cannot go from encrypted $\rightarrow$ unecrypted cluster, however. 
+
+### Point in Time Recovery
+
+- automated backups and DB snapshots for MySQL is supported for only InnoDB.
+- uses RDS automated backups and transaction logs
+- if backup window time is set to 0, then no backup snapshots are created, and thus no ability for PiTR.
+- if the point in time to restore to is within the retention period, you can specify up to a specific second.
+- the most recent backup snapshot is retrieved, and transaction logs are pplied to restore your DB to that point in time.
 
 ### Autoscaling
 
