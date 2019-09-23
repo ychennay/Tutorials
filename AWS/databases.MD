@@ -106,24 +106,36 @@ Two types of DB instances:
 * **primary**: supports reads/writes, and is a singleton instance (only 1 primary instance)
 * **replica**: also connects to the same underlying storage volume, supports only read operations (a max of 15 replica instances per Aurora DB cluster)
 
-THe underlying storage (**cluster volume** can scale up to 64TB). Each availability zone that the cluster volume resides in will have 2 copies of the DB cluster data.
+THe underlying storage (**cluster volume** can scale up to 64TB) is SSD and stored on 3 AZs in the same region. Each availability zone that the cluster volume resides in will have 2 copies of the DB cluster data. Storage replication is **independent of number of instances**. Table size is limited to 64TB.
 
 No concept of a **standby instance**.
 
-Differences with Amazon RDS:
+### Differences with Amazon RDS
 In RDS,
-* 1 **primary instance** in **AZ1** that handles all writes (and some reads potentially)
+* 1 **primary instance** in **AZ1** that handles all writes (and some reads potentially). If the primary instance reboots, all the replica instances will also be rebooted.
 * **Read replicas** in other Availability Zones that asynchronously replicated from the master instance. AWS recommends that the replicas are the same DB instance class as the primary instance.
 
 ### Migration from Amazon RDS
 1. Create an RDS snapshot, and then restore snapshot in Aurora
 2. Set up one-way replication.
 
+### Security
+
+IAM can be used for identity access management, and **VPC endpoint** to route traffic from a private VPC without it crossing the public internet. Use a VPC security group on the VPC endpoint to control which instances in your VPC get access to the endpoint. 
+
+Automated backups, read replicas, snapshots can all be encrypted via AES-256. You cannot convert an unencrypted DB cluster to encrypted one easily:
+1. Take a snapshot of the unencrypted DB cluster.
+2. Specify a KMS encryption key upon restore.
+
+You cannot go from encrypted $\rightarrow$ unecrypted cluster, however. 
+
 ### Autoscaling
 
 Aurora is an example of **single master replication**, since there is only one master instance, autoscaling for Aurora applies only to read replicas. Autoscaling must start with at least one replica. 
 
 For **primary failover**: if the primary instance goes out of business, then Aurora will check if there is a read replica. If there is, it will promote this replica to primary by pointing the **cluster endpoint** to the new read replica instance. If there are no replicas, it will create a new primary instance, but this means that your Aurora cluster will be unavailable for the amount of time it takes for Aurora to spin up the new instance. 
+
+If an application consuming the Aurora endpoints is caching the IP addresses of the primary instance, set TTL time to a low number in case of failover (IP will point to something )
 
 ### Connections and Endpoints
 
@@ -136,3 +148,18 @@ An **instance endpoint** is a URL for a specific DB instance, used to provided d
 A **custom endpoint** (up to 5, not available for Aurora Serverless) can be created by users specific to a particular workload. From the documentation:
 
 > For example, you may provision a set of Aurora Replicas to use an instance type with higher memory capacity in order to run an analytics workload. A custom endpoint can then help you route the analytics workload to these appropriately-configured instances, while keeping other instances in your cluster isolated from this workload. 
+
+### Aurora Global Database
+
+Consists of one primary AWS region and one secondary (read-only) region. AWS Aurora will support up to 5 cross regions with DB cluster read replicas.  You can also promote a single read replica instance into its own standalone cluster.
+
+Typical use cases:
+* Disaster recovery in a different region (promote replica in different region to primary)
+* You start in North America with your business customers but now many of your queries are originating from APAC- you **create a secondary AWS Region** to achieve lower latency reads
+
+### Integratins with other AWS Services
+
+- Use Aurora MySQL DB stored procedures and functions to invoke AWS Lambda
+- Load data into Aurora table from S3 bucket (MySQL)
+- Query data from MySQL DB cluster and save directly as text files in S3 bucket
+
