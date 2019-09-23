@@ -1,5 +1,7 @@
 # Databases
 
+
+
 ## Important Metrics
 
 * **RPO (recovery point objective)**: maximum period of acceptable data loss (*how much data are you okay losing in the event of a failure?*)
@@ -58,7 +60,16 @@ The ratio of storage in gigabytes to provisioned IOPS must be at least **50:1**.
 
 You can allocate between 1,000 to 40,000 provisioned IOPs and between 100GB to 16TB of data. 
 
-## DynamoDB Autoscaling
+## DynamoDB 
+
+NoSQL databases such as DynamoDB are ideal when you will query data based on only one attribute (column), as you can specify this as the primary key and optimize w/ an index. 
+
+
+## Strongly Consistent versus Eventually Consistent
+
+A **single strongly consistent** read of 4KB per second will consume 1 read capacity unit. An **eventual consistent** read of 2KB per second will consume 1 RCU.
+
+### Autoscaling
 
 1. Specify a maximum and minimum **Read** and **Write** Capacity Unit (RCU and WCUs), along with **utilization**.
 
@@ -70,4 +81,40 @@ Items are distributed across partitions based on the **partition key** (AKA **ha
 
 ### Composite Primary Keys
 
-Use the combination of a **partition key** and a **sort key** to unique identify each item.
+Use the combination of a **partition key** and a **sort key** to unique identify each item. Sort keys are ideal for non-unique columns that are commonly used to order records, like the `order_date` field.
+
+## Redshift
+
+Redshift is an **OLAP** database with **columnar storage** ideal for analytical or complex relational queries.
+
+Types of nodes:
+* **Dense compute nodes**: can store up to 326TB of data on magnetic storage.
+* **Dense storage nodes**: can store up to 2PB of data on SSD (use this if you want to optimize read speeds)
+
+Any cluster with more than one compute node includes a **leader node**.
+
+Distribution styles:
+* **EVEN**: leader node spreads data evenly across all compute notes (default style)
+* **KEY**: data is distributed according to the value in a single column
+* **ALL**: all tables are distirbuted to all compute nodes.
+
+## Aurora
+
+A **regional service** database engine compatible with MySQL (5x throughout) and PostgreSQL (3x throoughput), where compute and storage are partitioned, with a primary instance that allows reads and writes. Sync with read replicas is **synchronous**.
+
+Two types of DB instances:
+* **primary**: supports reads/writes, and is a singleton instance (only 1 primary instance)
+* **replica**: also connects to the same underlying storage volume, supports only read operations (a max of 15 replica instances per Aurora DB cluster)
+
+THe underlying storage (**cluster volume** can scale up to 64TB). Each availability zone that the cluster volume resides in will have 2 copies of the DB cluster data.
+
+No concept of a **standby instance**.
+
+Differences with Amazon RDS:
+In RDS,
+* 1 **primary instance** in **AZ1** that handles all writes (and some reads potentially)
+* **Read replicas** in other Availability Zones that asynchronously replicated from the master instance
+
+### Migration from Amazon RDS
+1. Create an RDS snapshot, and then restore snapshot in Aurora
+2. Set up one-way replication
