@@ -1,21 +1,35 @@
 # Databases
 
-
-
 ## Important Metrics
 
 * **RPO (recovery point objective)**: maximum period of acceptable data loss (*how much data are you okay losing in the event of a failure?*)
 
 * **RTO (recovery time objective)**: maximum acceptable time to recover data and resume normal operations after failure.
 
-## Point in Time Recovery
+Replication to create read-replicas is **asynchronous**:
 
+## Point in Time Recovery
 
 Enabling **point-in-time recovery** generates database change logs written to S3 each 5 minutes. 
 
 ## Service Levels
 
 AWS gaurantees service levels for provisioned IOPS within a **10%** range for 99.9% of the year (ie., any time except for 2 hours and 45 minutes a year).
+
+If you need to perform custom service configurations on a database engine, then you are better off deploying AWS EC2 instances and spinning up the database on the instances (since you'll need to SSH in for custom work).
+
+### Failovers for Multi-AZ
+
+During failover, the DNS record of the RDS endpoint is updated to point to the IP address of the standby instance. But the endpoint does not change.
+
+To initiate a manual failover, initiate a reboot with a failover on the primary RDS instance. When an automatic failover occurs, you can **subscribe to an SNS topic** to receive a notification for an automatic failover event. 
+
+The new DB instance promoted from a read-replica to primary will inherit the following:
+* backup window (but NOT the maintenance window)
+* backup retention period
+* database parameter group
+
+The other, non-promoted read replicas will continue to function as before, replicating from the original primary DB instance.
 
 ## General-Purpose SSD
 
@@ -68,6 +82,7 @@ NoSQL databases such as DynamoDB are ideal when you will query data based on onl
 ## Strongly Consistent versus Eventually Consistent
 
 A **single strongly consistent** read of 4KB per second will consume 1 read capacity unit. An **eventual consistent** read of 2KB per second will consume 1 RCU.
+
 
 ### Autoscaling
 
@@ -149,6 +164,10 @@ A **custom endpoint** (up to 5, not available for Aurora Serverless) can be crea
 
 > For example, you may provision a set of Aurora Replicas to use an instance type with higher memory capacity in order to run an analytics workload. A custom endpoint can then help you route the analytics workload to these appropriately-configured instances, while keeping other instances in your cluster isolated from this workload. 
 
+### Sharing with Other Accounts
+
+You can share the Aurora snapshots with at most 20 other accounts. If the snapshot is encrypted, make sure it is not encrypted with a default KMS key, but rather a custom key that you gran access to the `Decrypt` action to the shared account. The other account will need to take the snapshot and spin up a cluster from it. 
+
 ### Aurora Global Database
 
 Consists of one primary AWS region and one secondary (read-only) region. AWS Aurora will support up to 5 cross regions with DB cluster read replicas.  You can also promote a single read replica instance into its own standalone cluster.
@@ -162,4 +181,18 @@ Typical use cases:
 - Use Aurora MySQL DB stored procedures and functions to invoke AWS Lambda
 - Load data into Aurora table from S3 bucket (MySQL)
 - Query data from MySQL DB cluster and save directly as text files in S3 bucket
+
+### Aurora Serverless
+
+AWS will manage a **DB capacity warm pool** of instances that can be quickly provisioned on demand. 
+
+Use case:
+* intermittent, unpredictable workloads
+* low-volume blog site
+* new applications where the performance requirements are unknown and need to be discovered
+* more cost-effective in this case
+* architect doesn't know best instance class size to use
+* development and test databases
+
+Currently, failover in Serverless takes longer than provisioned cluster, as the DB cluster is created in a single availability zone, and Aurora must recreate the DB instance in a different AZ (**automatic multi-AZ failover**).
 
