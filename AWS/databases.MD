@@ -113,8 +113,26 @@ No concept of a **standby instance**.
 Differences with Amazon RDS:
 In RDS,
 * 1 **primary instance** in **AZ1** that handles all writes (and some reads potentially)
-* **Read replicas** in other Availability Zones that asynchronously replicated from the master instance
+* **Read replicas** in other Availability Zones that asynchronously replicated from the master instance. AWS recommends that the replicas are the same DB instance class as the primary instance.
 
 ### Migration from Amazon RDS
 1. Create an RDS snapshot, and then restore snapshot in Aurora
-2. Set up one-way replication
+2. Set up one-way replication.
+
+### Autoscaling
+
+Aurora is an example of **single master replication**, since there is only one master instance, autoscaling for Aurora applies only to read replicas. Autoscaling must start with at least one replica. 
+
+For **primary failover**: if the primary instance goes out of business, then Aurora will check if there is a read replica. If there is, it will promote this replica to primary by pointing the **cluster endpoint** to the new read replica instance. If there are no replicas, it will create a new primary instance, but this means that your Aurora cluster will be unavailable for the amount of time it takes for Aurora to spin up the new instance. 
+
+### Connections and Endpoints
+
+A **handler endpoint** is a URL (host name and port) that is provided by Aurora that contains logic to determine where to route a request for a query, or a write transaction, etc. to the IP address of the DB cluster instance to handle the request, providing failover support for the cluster. This endpoint cannot be modified. 
+
+A **reader endpoint** is a URL that connects to one of the available read replicas in the DB cluster, providing load-balancing for read-only connections. 
+
+An **instance endpoint** is a URL for a specific DB instance, used to provided direct, granular control over individual connections or instances in the cluster. You might use this to configure **fine-grained load balancing for a specific request**. 
+
+A **custom endpoint** (up to 5, not available for Aurora Serverless) can be created by users specific to a particular workload. From the documentation:
+
+> For example, you may provision a set of Aurora Replicas to use an instance type with higher memory capacity in order to run an analytics workload. A custom endpoint can then help you route the analytics workload to these appropriately-configured instances, while keeping other instances in your cluster isolated from this workload. 
