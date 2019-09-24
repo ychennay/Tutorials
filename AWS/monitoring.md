@@ -6,7 +6,9 @@ An **event** in the context of CloudTrail is an action (`ListObjects`) a princip
 
 A **trail** is a setup that delivers event logs to a user-specified S3 bucket. A trail can be configured for either a specific region, or all regions.
 
-By default, CloudTrail logs **90 days of management events**, with separate vent histories for each region. Global events like Route 53 or IAM are included in each region's event history. If you want more than 90 days of event history or want to customize event types, you should create a **trail** (up to 5 trails per region).
+By default, CloudTrail logs **90 days of management events**, with separate vent histories for each region. Global events like Route 53 or IAM are included in each region's event history. If you want more than 90 days of event history or want to customize event types, you should create a **trail** (up to 5 trails per region). A trail that is global will count as one trail per region.
+
+Creating a trail via the management console defaults to **all regions**. On the API or CLI, the default is a **single region.**
 
 ### Management Events
 
