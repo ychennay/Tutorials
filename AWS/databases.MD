@@ -100,12 +100,15 @@ The ratio of storage in gigabytes to provisioned IOPS must be at least **50:1**.
 
 You can allocate between 1,000 to 40,000 provisioned IOPs and between 100GB to 16TB of data. 
 
-## DynamoDB 
+# DynamoDB 
 
 NoSQL databases such as DynamoDB are ideal when you will query data based on only one attribute (column), as you can specify this as the primary key and optimize w/ an index. 
 
+### DynamoDB Streams
 
-## Strongly Consistent versus Eventually Consistent
+![Token](public/StreamsAndTriggers.png)
+
+### Strongly Consistent versus Eventually Consistent
 
 A **single strongly consistent** read of 4KB per second will consume 1 read capacity unit. An **eventual consistent** read of 2KB per second will consume 1 RCU.
 
