@@ -1,5 +1,8 @@
 # Storage
 
+## CloudFront
+
+Goal is not to have users directly access the S3 resource URL.
 
 ## S3
 

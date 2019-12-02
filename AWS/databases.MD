@@ -104,9 +104,30 @@ You can allocate between 1,000 to 40,000 provisioned IOPs and between 100GB to 1
 
 NoSQL databases such as DynamoDB are ideal when you will query data based on only one attribute (column), as you can specify this as the primary key and optimize w/ an index. 
 
+### Integration with SQS
+
+1. Application writes to middle-tier SQS app, which writes to DynamoDB
+2. If DynamoDB is throttled, then write to SQS first as a buffer queue.
+3. An SQS queue draining app checks the queue and drains it with writes into DynamoDB when queue length > 0.
+
+### DynamoDB Global Tables
+
+Use cases:
+* Use Global tables as a **cache layer** (application in geo specific region accesses closest Global Table for resiliency, lower latency).
+* 
+
+### DynamoDB Accelerator (DAX)
+
 ### DynamoDB Streams
 
+DynamoDB Streams captures a **time-ordered sequence of item-level modifications** in any DynamoDB table and stores this information in a log for up to 24 hours. Applications can access this log and view the data items as they appeared before and after they were modified, in near-real time.
+
 ![Token](public/StreamsAndTriggers.png)
+
+Sample use cases:
+* An application in one AWS Region modifies the data in a DynamoDB table. A second application in another Region reads these data modifications and writes the data to another table, creating a replica that stays in sync with the original table.
+
+Can be used instead of creating a worker-tier application and overhead of syncing across multi-region tables. Should typically not try to write data to a DynamoDB table in each region directly.
 
 ### Strongly Consistent versus Eventually Consistent
 
@@ -184,6 +205,8 @@ You cannot go from encrypted $\rightarrow$ unecrypted cluster, however.
 ### Autoscaling
 
 Aurora is an example of **single master replication**, since there is only one master instance, autoscaling for Aurora applies only to read replicas. Autoscaling must start with at least one replica. 
+
+Note that Aurora replication **replicates entire tables**, not individual records.
 
 For **primary failover**: if the primary instance goes out of business, then Aurora will check if there is a read replica. If there is, it will promote this replica to primary by pointing the **cluster endpoint** to the new read replica instance. If there are no replicas, it will create a new primary instance, but this means that your Aurora cluster will be unavailable for the amount of time it takes for Aurora to spin up the new instance. 
 

@@ -19,3 +19,18 @@ Management events are grouped into two types:
 ### Data Events
 
 ### Log File Integrity
+
+### Sample Use Cases
+
+#### On-Premise Monitoring Integration
+Your customer’s **existing on-premises monitoring system** currently receives performance notifications from local management systems and data from agents installed in on-premises operating systems. The customer wants to use this on-premises monitoring system to **monitor Amazon EC2 instance performance and state changes of EC2 instances**.
+
+What should you do to **monitor EC2 instance state changes and performance**?
+
+Proposed:
+1. Configure a **CloudWatch Events rule** for Amazon EC2 instance state changes. 
+2. Have the Events rule **trigger an AWS Lambda function** that notifies your monitoring system. 
+3. **Pull CloudWatch metric data** into your monitoring system.
+
+Considerations:
+- CloudTrail is for API calls, and is not a relevant service for this problem (we are worried about performance monitoring and state transitions, not user API calls)
