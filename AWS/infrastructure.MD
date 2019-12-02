@@ -60,4 +60,4 @@ Resources:
           # run some commands
           /opt/aws/bin/cfn-signal --exit-code 0 --resource VirtualMachine --region ${AWS::Region} --stack ${AWS::StackName}
 ```
-The above CreationPolicy that instructs CloudFormation to wait for a signal with a timeout of 10 minutes (PT10M). The `/opt/aws/bin/cfn-signal` command sends the signal to CloudFormation to indicate that the user data script finished successfully (`--exit-code 0`).
+The above CreationPolicy that instructs CloudFormation to wait for a signal with a timeout of 10 minutes (`PT10M`). The `/opt/aws/bin/cfn-signal` command sends the signal to CloudFormation to indicate that the user data script finished successfully (`--exit-code 0`).

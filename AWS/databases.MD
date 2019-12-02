@@ -131,8 +131,7 @@ Can be used instead of creating a worker-tier application and overhead of syncin
 
 ### Strongly Consistent versus Eventually Consistent
 
-A **single strongly consistent** read of 4KB per second will consume 1 read capacity unit. An **eventual consistent** read of 2KB per second will consume 1 RCU.
-
+A **single strongly consistent** read of 4KB per second will consume 1 read capacity unit. An **eventual consistent** read of 2KB per second will consume 1 RCU (half the cost in terms of RCUs as strongly consistent reads).
 
 ### Autoscaling
 
@@ -171,7 +170,7 @@ Two types of DB instances:
 * **primary**: supports reads/writes, and is a singleton instance (only 1 primary instance)
 * **replica**: also connects to the same underlying storage volume, supports only read operations (a max of 15 replica instances per Aurora DB cluster)
 
-THe underlying storage (**cluster volume** can scale up to 64TB) is SSD and stored on 3 AZs in the same region. Each availability zone that the cluster volume resides in will have 2 copies of the DB cluster data. Storage replication is **independent of number of instances**. Table size is limited to 64TB.
+THe underlying storage (**cluster volume** can scale up to **64TB**) is SSD and stored on **3 AZs in the same region**. Each availability zone that the cluster volume resides in will have 2 copies of the DB cluster data. Storage replication is **independent of number of instances**. Table size is limited to 64TB.
 
 No concept of a **standby instance**.
 
@@ -256,3 +255,16 @@ Use case:
 
 Currently, failover in Serverless takes longer than provisioned cluster, as the DB cluster is created in a single availability zone, and Aurora must recreate the DB instance in a different AZ (**automatic multi-AZ failover**).
 
+## Use Cases
+
+A company has a **24 TB MySQL database** in its on-premises data center that grows at the rate of 10 GB per day. The data center is connected to the company’s AWS infrastructure with a 50 Mbps VPN connection. The company is migrating the application and workload to AWS. The application code is already installed and tested on Amazon EC2. The company now needs to migrate the database and wants to go live on AWS within 3 weeks.
+
+Which of the following approaches meets the schedule with LEAST downtime?
+
+Proposal:
+1. Create a database export locally and import into AWS Snowball
+2. Launch Aurora DB instance (MySQL RDS only supports a capacity of 16TB)
+3. Load data into the Aurora DB via the Snowball export
+4. Set up database replication from on-premise DB to RDS Aurora DB via the VPN.
+5. Switch over DNS CNAME/A record to the Aurora instance DNS endpoint
+6. Stop replication once it is in sync.

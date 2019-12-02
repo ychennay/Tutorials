@@ -41,3 +41,62 @@ Considerations:
 - Not a load balancer issue here: detaching a load balancer would stop all traffic to the instances in the ASG.
 - **[EC2 autoscaling lifecycle hooks](https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)**
 - If you are using CloudFormation, you can use **[cfn-hup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-hup.html)** (The `cfn-hup` helper is a daemon that detects changes in resource metadata and runs user-specified actions when a change is detected).
+
+## Read-Heavy Workloads
+
+A company has an **application that accesses a relational DB tier** and runs on several EC2 instances placed behind an application load balancer. This application will now be used with a **read-heavy workload** to make medical records accessible to multiple insurance companies. Due to the nature of the data, compliance requires **data protection at-rest and high availability**, especially during sudden large peaks in load.
+What is the best solution to improve performance for the current architecture?
+
+**Proposal**: Use an auto scaling group for the EC2 instances across multiple Availability Zones. Deploy an ElastiCache Redis cluster in front of the DB tier and configure **[write through](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/Strategies.html#Strategies.WriteThrough)**. 
+
+Considerations:
+- Memcache does not support encryption at rest for data (must use Redis)
+- lazy loading loads data into the cache only when necessary.
+
+## Caching Strategies
+
+### Write Through
+
+#### Advantages
+
+* Data in the cache is never stale. Because the data in the cache is updated every time it's written to the database, the data in the cache is always current.
+
+* Write penalty vs. read penalty. Every write involves two trips:
+- A write to the cache
+- A write to the database
+
+Which adds latency to the process. That said, **end users are generally more tolerant of latency when updating data than when retrieving data**. There is an inherent sense that updates are more work and thus take longer.
+
+### Lazy Loading
+A **cache hit** occurs when data is in the cache and isn't expired:
+
+1. Your application requests data from the cache.
+
+2. The cache returns the data to the application.
+
+A **cache miss** occurs when data isn't in the cache or is expired:
+
+1. Your application requests data from the cache.
+
+2. The cache doesn't have the requested data, so returns a null.
+
+3. Your application requests and receives the data from the database.
+
+4. Your application updates the cache with the new data.
+
+#### Advantages
+* Only requested data is cached.
+
+* Because most data is never requested, lazy loading avoids filling up the cache with data that isn't requested.
+
+* Node failures aren't fatal for your application. When a node fails and is replaced by a new, empty node, your application continues to function, though with increased latency. As requests are made to the new node, each cache miss results in a query of the database. At the same time, the data copy is added to the cache so that subsequent requests are retrieved from the cache.
+
+#### Disadvantages
+
+1. Cache misses result in 3 trips:
+
+* Initial request for data from the cache
+* Query of the database for the data
+* Writing the data to the cache
+
+2. Potential for stale data. 
